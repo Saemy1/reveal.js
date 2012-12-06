@@ -1,0 +1,69 @@
+
+
+/*********************************************
+ * CONTROLS
+ *********************************************/
+
+.reveal .controls {
+  display: none;
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  z-index: 30;
+  right: 10px;
+  bottom: 10px;
+}
+
+.reveal .controls div {
+  position: absolute;
+  opacity: 0.1;
+  width: 0; 
+  height: 0; 
+  border: 12px solid transparent;
+
+  -webkit-transition: opacity 0.2s ease;
+     -moz-transition: opacity 0.2s ease;
+      -ms-transition: opacity 0.2s ease;
+       -o-transition: opacity 0.2s ease;
+          transition: opacity 0.2s ease;
+}
+
+.reveal .controls div.enabled {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.reveal .controls div.enabled:active {
+  margin-top: 1px;
+}
+
+.reveal .controls div.navigate-left {
+  top: 42px;
+
+  border-right-width: 22px;
+  border-right-color: #eee;
+}
+
+.reveal .controls div.navigate-right {
+  left: 74px;
+  top: 42px;
+
+  border-left-width: 22px;
+  border-left-color: #eee;
+}
+
+.reveal .controls div.navigate-up {
+  left: 42px;
+
+  border-bottom-width: 22px;
+  border-bottom-color: #eee;
+}
+
+.reveal .controls div.navigate-down {
+  left: 42px;
+  top: 74px;
+
+  border-top-width: 22px;
+  border-top-color: #eee;
+}
+

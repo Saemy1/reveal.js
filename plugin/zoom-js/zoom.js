@@ -56,6 +56,7 @@ var zoom = (function(){
 	// Monitor mouse movement for panning
 	document.addEventListener( 'mousemove', function( event ) {
 		if( level !== 1 ) {
+		
 			mouseX = event.clientX;
 			mouseY = event.clientY;
 		}
@@ -72,8 +73,9 @@ var zoom = (function(){
 	 * @param {Number} scale 
 	 */
 	function magnify( pageOffsetX, pageOffsetY, elementOffsetX, elementOffsetY, scale ) {
-
+	
 		if( supportsTransforms ) {
+			
 			var origin = pageOffsetX +'px '+ pageOffsetY +'px',
 				transform = 'translate('+ -elementOffsetX +'px,'+ -elementOffsetY +'px) scale('+ scale +')';
 			
@@ -125,6 +127,7 @@ var zoom = (function(){
 	 * of the window.
 	 */
 	function pan() {
+		
 		var range = 0.12,
 			rangeX = window.innerWidth * range,
 			rangeY = window.innerHeight * range,
@@ -150,6 +153,7 @@ var zoom = (function(){
 	}
 
 	function getScrollOffset() {
+		
 		return {
 			x: window.scrollX !== undefined ? window.scrollX : window.pageXOffset,
 			y: window.scrollY !== undefined ? window.scrollY : window.pageXYffset
@@ -168,6 +172,7 @@ var zoom = (function(){
 		 *   - scale: can be used instead of width/height to explicitly set scale
 		 */
 		to: function( options ) {
+			
 			// Due to an implementation limitation we can't zoom in
 			// to another element without zooming out first
 			if( level !== 1 ) {
@@ -224,6 +229,8 @@ var zoom = (function(){
 		 * Resets the document zoom state to its default.
 		 */
 		out: function() {
+			
+			
 			clearTimeout( panEngageTimeout );
 			clearInterval( panUpdateInterval );
 

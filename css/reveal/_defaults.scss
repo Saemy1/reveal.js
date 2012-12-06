@@ -1,0 +1,154 @@
+
+/*********************************************
+ * DEFAULT ELEMENT STYLES
+ *********************************************/
+
+/* Fixes issue in Chrome where italic fonts did not appear when printing to PDF */
+.reveal:after {
+  content: '';
+  font-style: italic;
+}
+
+/* Preserve aspect ratio and scale image so it's bound within the section */
+.reveal img,
+.reveal iframe {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.reveal strong,
+.reveal b {
+	font-weight: bold;
+}
+
+.reveal em,
+.reveal i {
+	font-style: italic;
+}
+
+.reveal ol,
+.reveal ul {
+	display: inline-block;
+
+	text-align: left;
+	margin: 0 0 0 0;
+}
+
+.reveal ol {
+	list-style-type: decimal;
+}
+
+.reveal ul {
+	list-style-type: disc;
+}
+
+.reveal ul ul {
+	list-style-type: square;
+}
+
+.reveal ul ul ul {
+	list-style-type: circle;
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+	display: block;
+	margin-left: $default-margin-left;
+}
+
+.reveal p {
+	margin-bottom: $default-margin-bottom;
+	line-height: 1.2em;
+}
+
+.reveal q,
+.reveal blockquote {
+	quotes: none;
+}
+
+.reveal blockquote {
+	display: block;
+	position: relative;
+	width: 70%;
+	margin: $default-small-margin auto;
+	padding: $default-small-padding;
+
+	font-style: italic;
+	background: rgba(255, 255, 255, 0.05);
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+}
+	.reveal blockquote p:first-child,
+	.reveal blockquote p:last-child {
+		display: inline-block;
+	}
+	.reveal blockquote:before {
+		content: '\201C';
+	}
+	.reveal blockquote:after {
+		content: '\201D';
+	}
+
+.reveal q {
+	font-style: italic;
+}
+	.reveal q:before {
+		content: '\201C';
+	}
+	.reveal q:after {
+		content: '\201D';
+	}
+
+.reveal pre {
+	display: block;
+	position: relative;
+	width: 90%;
+	margin: ($default-small-margin * 3) auto;
+
+	text-align: left;
+	font-size: 0.55em;
+	font-family: monospace;
+	line-height: 1.2em;
+
+	word-wrap: break-word;
+
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+}
+.reveal pre code {
+	padding: $default-small-padding;
+}
+
+.reveal code {
+	font-family: monospace;
+	overflow: auto;
+	max-height: $max-code-height;
+}
+
+.reveal table th,
+.reveal table td {
+	text-align: left;
+	padding-right: .3em;
+}
+
+.reveal table th {
+	text-shadow: rgb(255,255,255) 1px 1px 2px;
+}
+
+.reveal sup {
+	vertical-align: super;
+}
+.reveal sub {
+	vertical-align: sub;
+}
+
+.reveal small {
+	display: inline-block;
+	font-size: 0.6em;
+	line-height: 1.2em;
+	vertical-align: top;
+}
+
+.reveal small * {
+	vertical-align: top;
+}

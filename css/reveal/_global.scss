@@ -1,0 +1,31 @@
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+
+body {
+  margin: 0 auto !important;
+}
+html,
+body {
+  //width: 320px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y:scroll;
+  margin:0;
+}
+ 
+body {
+  position: relative;
+  line-height: 1;
+}
+
+::selection {
+  background: $selection-bg-color; 
+  @include contrasted($selection-bg-color);
+  text-shadow: none;
+}
+
+.reveal .slides {
+    font-size: 0.36em;
+    overflow: scroll;
+}

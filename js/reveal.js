@@ -13,10 +13,21 @@ var Reveal = (function(){
 		HORIZONTAL_SLIDES_SELECTOR = '.reveal .slides>section',
 		VERTICAL_SLIDES_SELECTOR = '.reveal .slides>section.present>section',
 
+		urlrewrite = false,
+		
 		// Configurations defaults, can be overridden at initialization time
 		config = {
+			//STATEMACHINE: overview, show, isolate
+			state: 'overview',
+			
 			// Display controls in the bottom right corner
 			controls: true,
+
+			// Display menubutton in the top right corner
+			menubutton: true,
+			
+			// Display closebutton in the top right corner
+			closebutton: true,
 
 			// Display a presentation progress bar
 			progress: true,
@@ -48,7 +59,7 @@ var Reveal = (function(){
 			mouseWheel: false,
 
 			// Apply a 3D roll to links on hover
-			rollingLinks: true,
+			rollingLinks: false,
 
 			// Transition style (see /css/theme)
 			theme: null,
@@ -110,7 +121,9 @@ var Reveal = (function(){
 			startCount: 0,
 			handled: false,
 			threshold: 80
-		};
+		},
+		
+		pages = [];
 
 	/**
 	 * Starts up the presentation if the client is capable.
@@ -130,6 +143,15 @@ var Reveal = (function(){
 		// Hide the address bar in mobile browsers
 		hideAddressBar();
 
+		//Load Navi
+	 	$('#nav a').each(function() {
+		 	var hash  = this.href.split("#")[1];
+		 	hash = hash.split('/')[1];	
+		 	//console.log(hash);
+		 	
+		 	pages.push("/reveal.js/server/data/" + hash + ".html");
+		 });
+	 
 		// Loads the dependencies and continues to #start() once done
 		load();
 
@@ -154,6 +176,22 @@ var Reveal = (function(){
 			dom.wrapper.appendChild( progressElement );
 		}
 
+		// Menubutton 
+		if( !dom.wrapper.querySelector( '.menubutton' ) && config.menubutton ) {
+			var menubuttonElement = document.createElement( 'aside' );
+			menubuttonElement.classList.add( 'menubutton' );
+			menubuttonElement.innerHTML = '<div class="overviewlink"><a href="#/overview"><img src="lib/img/menu.png"/></a></div>';
+			dom.wrapper.appendChild( menubuttonElement );
+		}
+		
+		// closebutton 
+		if( !dom.wrapper.querySelector( '.closebutton' ) && config.closebutton ) {
+			var closebuttonElement = document.createElement( 'aside' );
+			closebuttonElement.classList.add( 'closebutton' );
+			closebuttonElement.innerHTML = '<div class="closebuttonlink"><a href="#/overview"><img src="lib/img/close.png"/></a></div>';
+			dom.wrapper.appendChild( closebuttonElement );
+		}
+		
 		// Arrow controls
 		if( !dom.wrapper.querySelector( '.controls' ) && config.controls ) {
 			var controlsElement = document.createElement( 'aside' );
@@ -193,6 +231,13 @@ var Reveal = (function(){
 			dom.controlsDown = toArray( document.querySelectorAll( '.navigate-down' ) );
 			dom.controlsPrev = toArray( document.querySelectorAll( '.navigate-prev' ) );
 			dom.controlsNext = toArray( document.querySelectorAll( '.navigate-next' ) );
+		}
+		
+		if ( config.menubutton ) {
+			dom.menubutton = document.querySelector( '.reveal .menubutton' );
+		}
+		if ( config.closebutton ) {
+			dom.closebutton = document.querySelector( '.reveal .closebutton' );
 		}
 	}
 
@@ -306,7 +351,13 @@ var Reveal = (function(){
 		}
 
 		if( config.controls && dom.controls ) {
-			dom.controls.style.display = 'block';
+			dom.controls.style.display = 'none';
+		}
+		if( config.menubutton && dom.menubutton ) {
+			dom.menubutton.style.display = 'block';
+		}
+		if( config.closebutton && dom.closebutton ) {
+			dom.closebutton.style.display = 'block';
 		}
 
 		if( config.progress && dom.progress ) {
@@ -375,6 +426,7 @@ var Reveal = (function(){
 			dom.controlsNext.forEach( function( el ) { el.addEventListener( 'click', preventAndForward( navigateNext ), false ); } );
 		}
 	}
+	
 
 	/**
 	 * Unbinds all event listeners.
@@ -400,6 +452,7 @@ var Reveal = (function(){
 			dom.controlsNext.forEach( function( el ) { el.removeEventListener( 'click', preventAndForward( navigateNext ), false ); } );
 		}
 	}
+	
 
 	/**
 	 * Extend object a with the properties of object b.
@@ -520,6 +573,7 @@ var Reveal = (function(){
 				}
 				else {
 					slide.style.top = Math.max( - ( slide.offsetHeight / 2 ) - 20, minTop ) + 'px';
+					
 				}
 			}
 
@@ -596,7 +650,7 @@ var Reveal = (function(){
 
 						vslide.setAttribute( 'data-index-h', i );
 						vslide.setAttribute( 'data-index-v', j );
-						vslide.style.display = 'block';
+						vslide.style.display = 'none';
 						vslide.style.WebkitTransform = vtransform;
 						vslide.style.MozTransform = vtransform;
 						vslide.style.msTransform = vtransform;
@@ -743,9 +797,19 @@ var Reveal = (function(){
 	 * @param {int} v Vertical index of the target slide
 	 */
 	function slide( h, v ) {
+		
+		console.log("SLIDE"+h+v);
 		// Remember where we were at before
 		previousSlide = currentSlide;
 
+		if(v === undefined ||(h === 0 && v === 0)) {
+			$('.reveal').scrollTop(0);
+			console.log("scroll " + h + v);
+			
+			
+		} else {
+			console.log("no scroll" + h + v);
+		}
 		// Query all horizontal slides in the deck
 		var horizontalSlides = document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
 		
@@ -774,6 +838,32 @@ var Reveal = (function(){
 		indexh = updateSlides( HORIZONTAL_SLIDES_SELECTOR, h === undefined ? indexh : h );
 		indexv = updateSlides( VERTICAL_SLIDES_SELECTOR, v === undefined ? indexv : v );
 
+		console.log("laod: " + indexh + indexv);
+
+		//console.log(pages);
+		if(indexh === 0 && indexv === 1) {
+			 $("#overview > section:last-child").load(pages[0], function() {
+			 	layout();
+			 });
+		} else {
+			 $("#overview > section:last-child").children().remove();
+		}
+		
+		/* for(var i = 1; i<pages.length;i++) {
+		 	 if(event.indexh === i) {
+		 	 	var scopedIndex = i;
+		 	 	 $("#" + scopedIndex).load(pages[scopedIndex], function() {
+		 	 	 	//console.log("loaded #"+scopedIndex + " > section");
+		 	 	 	 $("#"+scopedIndex + " > section").addClass("present");
+		 	 	 });
+			 	
+			 } else {
+			 	 $("#"+i).load(pages[i]);
+			 	 
+			 }
+		 	
+			
+		 }*/
 		layout();
 
 		// Apply the new state
@@ -806,7 +896,7 @@ var Reveal = (function(){
 		// Update the URL hash after a delay since updating it mid-transition
 		// is likely to cause visual lag
 		clearTimeout( writeURLTimeout );
-		writeURLTimeout = setTimeout( writeURL, 1500 );
+		writeURLTimeout = setTimeout( writeURL, 500 );
 
 		// Find the current horizontal slide and any possible vertical slides
 		// within it
@@ -836,9 +926,11 @@ var Reveal = (function(){
 		if( previousSlide ) {
 			previousSlide.classList.remove( 'present' );
 		}
-
+	
 		updateControls();
 		updateProgress();
+		
+		
 	}
 
 	/**
@@ -902,7 +994,9 @@ var Reveal = (function(){
 
 				// If this element contains vertical slides
 				if( element.querySelector( 'section' ) ) {
+					//console.log(slides[i]);
 					slides[i].classList.add( 'stack' );
+					
 				}
 			}
 
@@ -1001,15 +1095,17 @@ var Reveal = (function(){
 			} );
 
 			// Add the 'enabled' class to the available routes
-			if( routes.left ) dom.controlsLeft.forEach( function( el ) { el.classList.add( 'enabled' );	} );
-			if( routes.right ) dom.controlsRight.forEach( function( el ) { el.classList.add( 'enabled' ); } );
-			if( routes.up ) dom.controlsUp.forEach( function( el ) { el.classList.add( 'enabled' );	} );
-			if( routes.down ) dom.controlsDown.forEach( function( el ) { el.classList.add( 'enabled' ); } );
-
-			// Prev/next buttons
-			if( routes.left || routes.up ) dom.controlsPrev.forEach( function( el ) { el.classList.add( 'enabled' ); } );
-			if( routes.right || routes.down ) dom.controlsNext.forEach( function( el ) { el.classList.add( 'enabled' ); } );
-
+			
+			//if(config.state !== "overview" && config.state !== 'isolate') {
+				if( routes.left ) dom.controlsLeft.forEach( function( el ) { el.classList.add( 'enabled' );	} );
+				if( routes.right ) dom.controlsRight.forEach( function( el ) { el.classList.add( 'enabled' ); } );
+				if( routes.up ) dom.controlsUp.forEach( function( el ) { el.classList.add( 'enabled' );	} );
+				if( routes.down ) dom.controlsDown.forEach( function( el ) { el.classList.add( 'enabled' ); } );
+	
+				// Prev/next buttons
+				if( routes.left || routes.up ) dom.controlsPrev.forEach( function( el ) { el.classList.add( 'enabled' ); } );
+				if( routes.right || routes.down ) dom.controlsNext.forEach( function( el ) { el.classList.add( 'enabled' ); } );
+			//}
 		}
 	}
 
@@ -1034,8 +1130,18 @@ var Reveal = (function(){
 	 * Reads the current URL (hash) and navigates accordingly.
 	 */
 	function readURL() {
+		
+		if(urlrewrite === true) {
+			console.log("urlrewrite to FALSE");
+			urlrewrite = false;
+			return;
+		}
 		var hash = window.location.hash;
-
+		
+		console.log("READ URL");
+		if(hash.indexOf("rwd-router")!==-1) {
+			return;
+		}
 		// Attempt to parse the hash as either an index or name
 		var bits = hash.slice( 2 ).split( '/' ),
 			name = hash.replace( /#|\//gi, '' );
@@ -1062,7 +1168,9 @@ var Reveal = (function(){
 				v = parseInt( bits[1], 10 ) || 0;
 
 			slide( h, v );
+			
 		}
+	
 	}
 
 	/**
@@ -1082,8 +1190,15 @@ var Reveal = (function(){
 				if( indexh > 0 || indexv > 0 ) url += indexh;
 				if( indexv > 0 ) url += '/' + indexv;
 			}
-
+			
+			console.log("wirteurl:" + url);
+			console.log(window.location.hash);
+			if(window.location.hash !== "#" + url) {
+					urlrewrite = true;
+			}
+		
 			window.location.hash = url;
+			
 		}
 	}
 
@@ -1203,28 +1318,38 @@ var Reveal = (function(){
 	function navigateLeft() {
 		// Prioritize hiding fragments
 		if( availableRoutes().left && isOverviewActive() || previousFragment() === false ) {
-			slide( indexh - 1 );
+			//if(config.state !== "overview" && config.state !== 'isolate') {
+				slide( indexh - 1 );
+			//}
 		}
 	}
 
 	function navigateRight() {
 		// Prioritize revealing fragments
 		if( availableRoutes().right && isOverviewActive() || nextFragment() === false ) {
-			slide( indexh + 1 );
+			//if(config.state !== "overview" && config.state !== 'isolate') {
+				slide( indexh + 1 );
+			//}
 		}
+	
 	}
 
 	function navigateUp() {
 		// Prioritize hiding fragments
 		if( availableRoutes().up && isOverviewActive() || previousFragment() === false ) {
-			slide( indexh, indexv - 1 );
+		//	if(config.state !== "overview" && config.state !== 'isolate') {
+				slide( indexh, indexv - 1 );
+			//}
 		}
+		
 	}
 
 	function navigateDown() {
 		// Prioritize revealing fragments
 		if( availableRoutes().down && isOverviewActive() || nextFragment() === false ) {
-			slide( indexh, indexv + 1 );
+		//	if(config.state !== "overview" && config.state !== 'isolate') {
+				slide( indexh, indexv + 1 );
+		//	}
 		}
 	}
 
@@ -1292,9 +1417,9 @@ var Reveal = (function(){
 
 		switch( event.keyCode ) {
 			// p, page up
-			case 80: case 33: navigatePrev(); break;
+			//case 80: case 33: navigatePrev(); break;
 			// n, page down
-			case 78: case 34: navigateNext(); break;
+			//case 78: case 34: navigateNext(); break;
 			// h, left
 			case 72: case 37: navigateLeft(); break;
 			// l, right
@@ -1304,17 +1429,17 @@ var Reveal = (function(){
 			// j, down
 			case 74: case 40: navigateDown(); break;
 			// home
-			case 36: slide( 0 ); break;
+			//case 36: slide( 0 ); break;
 			// end
-			case 35: slide( Number.MAX_VALUE ); break;
+			//case 35: slide( Number.MAX_VALUE ); break;
 			// space
-			case 32: isOverviewActive() ? deactivateOverview() : navigateNext(); break;
+			//case 32: isOverviewActive() ? deactivateOverview() : navigateNext(); break;
 			// return
-			case 13: isOverviewActive() ? deactivateOverview() : triggered = false; break;
+			//case 13: isOverviewActive() ? deactivateOverview() : triggered = false; break;
 			// b, period
-			case 66: case 190: togglePause(); break;
+			//case 66: case 190: togglePause(); break;
 			// f
-			case 70: enterFullscreen(); break;
+			//case 70: enterFullscreen(); break;
 			default:
 				triggered = false;
 		}
@@ -1325,7 +1450,7 @@ var Reveal = (function(){
 			event.preventDefault();
 		}
 		else if ( event.keyCode === 27 && supports3DTransforms ) {
-			toggleOverview();
+			//toggleOverview();
 
 			event.preventDefault();
 		}
@@ -1412,11 +1537,11 @@ var Reveal = (function(){
 				}
 				else if( deltaY > touch.threshold ) {
 					touch.handled = true;
-					navigateUp();
+					//navigateUp();
 				}
 				else if( deltaY < -touch.threshold ) {
 					touch.handled = true;
-					navigateDown();
+					//navigateDown();
 				}
 
 				event.preventDefault();
@@ -1426,7 +1551,7 @@ var Reveal = (function(){
 		// There's a bug with swiping on some Android devices unless
 		// the default action is always prevented
 		else if( navigator.userAgent.match( /android/gi ) ) {
-			event.preventDefault();
+			//event.preventDefault();
 		}
 	}
 
@@ -1499,6 +1624,57 @@ var Reveal = (function(){
 			slide( h, v );
 		}
 	}
+	
+	/**
+	 * setState
+	 */
+	function setState(newstate) {
+		console.log(newstate);
+		config.state = newstate;
+		
+	}
+	/**
+	 * hide MenuButton
+	 */
+	function hideMenuButton() {
+		dom.menubutton.style.display = 'none';
+		
+	}
+	/**
+	 * show MenuButton
+	 */
+	function showMenuButton() {
+		dom.menubutton.style.display = 'block';
+		
+	}
+	/**
+	 * hide Controls
+	 */
+	function hideControls() {
+		dom.controls.style.display = 'none';
+		
+	}
+	/**
+	 * hide Controls
+	 */
+	function showControls() {
+		dom.controls.style.display = 'block';
+		
+	}
+	/**
+	 * hide CloseButton
+	 */
+	function hideCloseButton() {
+		dom.closebutton.style.display = 'none';
+		
+	}
+	/**
+	 * show CloseButton
+	 */
+	function showCloseButton() {
+		dom.closebutton.style.display = 'block';
+		
+	}
 
 
 	// --------------------------------------------------------------------//
@@ -1509,6 +1685,14 @@ var Reveal = (function(){
 	return {
 		initialize: initialize,
 
+		// New Methods
+		setState: setState,
+		hideMenuButton: hideMenuButton,
+		showMenuButton: showMenuButton,
+		hideCloseButton: hideCloseButton,
+		showCloseButton: showCloseButton,
+		hideControls: hideControls,
+		showControls: showControls,
 		// Navigation methods
 		slide: slide,
 		left: navigateLeft,
@@ -1572,5 +1756,7 @@ var Reveal = (function(){
 			}
 		}
 	};
+	
+	
 
 })();

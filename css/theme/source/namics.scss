@@ -1,0 +1,106 @@
+/**
+ * Default theme for reveal.js.
+ * 
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Background of the presentation
+$backgroundColor: #FFF; 
+
+// Primary/body text
+$mainFont: Arial, Verdana, Helvetica, sans-serif;
+$mainFontSize: 26px;
+$mainColor: #432752;
+ 
+// Headings
+$headingFont: Arial, Verdana, Helvetica, sans-serif;
+$headingWeight: bold;
+$headingColor: #432752;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$heading1TextShadow: none;
+$heading2BGColor: #B432A6;
+$heading2Color: #A9C400;
+// Links and actions
+$linkColor: #432752; 
+$linkColorHover: lighten( $linkColor, 20% ); 
+
+// Text selection
+$selectionBackgroundColor: #FF5E99;
+$selectionColor: #fff;
+
+strong {
+  color: $heading2Color;
+}
+ 
+.col, ul, li {
+  background-color:$heading2Color;
+}
+
+
+video {
+  background-color: black;
+  width:100%;
+  height: 180px;
+}
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+p.quote {
+   padding: 20px 30px 50px 30px;
+  background-color: $heading2Color;
+  color: $backgroundColor;
+  background-image: url("../../lib/img/nav.png");
+  background-repeat: no-repeat; 
+  background-position: bottom left;
+  background-position-x: 30px ; 
+  
+  quote { 
+    font-size: 2.4em;
+    line-height: 1em;
+    color: $backgroundColor;
+    display: block;
+    padding: 20px 0;
+  }
+  
+  quote:before {
+    content: "«"
+    
+  }
+  quote:after {
+    content: "»"
+    
+  }
+}
+video {
+  margin: 0 0 20px 0;
+}
+p.reference, h3.reference {
+   padding: 0 30px 20px 30px;
+   color: #a71680;
+}
+ .col {
+  h3, h4,p{
+  
+    color: white;
+   }
+   h3 {
+       padding: 20px 5px 0px 30px;
+   }
+   h4 {
+       padding:10px 5px 0 30px;
+   }
+   p {
+       padding:5px 5px 0 30px;
+       font-size: 0.8em;
+   }
+ }
+ .colorized {
+   background-color: $heading2Color;
+ }

@@ -1,0 +1,260 @@
+@charset "UTF-8";
+@import "compass/utilities/color/contrast";
+/*!
+ * reveal.js
+ * http://lab.hakim.se/reveal-js
+ * MIT licensed  
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+$padding-left:30px;
+$color1: #a71680;
+$color2: #472753;
+@import "reset";
+ 
+$selection-bg-color: #FFF;
+@import "global";
+@import "headers";
+@import "fragments"; 
+
+$default-margin-left: 10px;
+$default-margin-bottom: 2px;
+$default-small-margin: 2px;
+$default-small-padding: 2px;
+$max-code-height: 150px;
+
+@import "defaults";
+
+
+@import "controls";
+@import "progressbar";
+@import "rollinglinks";
+$slide-max-width: 320px;
+$slide-min-height: 150px;
+$slide-width: 100%;
+$slide-left: 50%;
+$slide-top: 50%;
+$slide-section-padding-top: 0;
+@import "slides";
+@import "transitions";
+@import "overview";
+@import "pause";
+@import "fallback";
+@import "backgroundstate";
+@import "rtlsupport";
+@import "speakersnote";
+@import "zoom";
+
+$grid-max-width: 280px;
+$grid-min-width: 100%;
+$grid-col-size: 280px;
+@import "grid";
+@import "custom"; 
+
+
+/*********************************************
+ * MEDIA Queryies
+ *********************************************/
+$c1: #432752;
+  $c2: #B432A6;
+  $c3: #000;
+  $c4: #A9C400;
+@media only screen and (min-width: 480px) {
+  body {
+    min-width: 480px;
+    max-width:719px;
+    width: 100%;
+  }
+  .reveal .slides {
+    font-size: 0.52em;
+    
+  }
+  
+  $default-margin-left: 40px;
+  $default-margin-bottom: 10px;
+  $default-small-margin: 5px; 
+  $default-small-padding: 5px;
+  $max-code-height: 400px;
+  @import "defaults";
+
+  $slide-max-width: 719px;
+  $slide-min-height: 420px;
+  $slide-width: 100%;
+  $slide-left: 50%;
+  $slide-top: 50%;
+  $slide-section-padding: 30px;
+  @import "slides";
+  
+  //$padding-left:10px;
+  $grid-max-width: 719px;
+  $grid-min-width: 480px;
+  $grid-col-size: 50%;
+  
+  
+  @import "grid";
+  
+   .reveal li {
+    height: 110px;
+    background-image:none;
+    word-wrap: break-word;
+    a, a:link, a:hover, a:visited, a:active {
+      color: white;
+    }
+    &:nth-child(2n) {
+      background-color: $c1;
+    }
+     &:nth-child(2n+1) {
+      background-color: $c2;
+    }
+     &:nth-child(3n) {
+      background-color: $c3;
+    }
+     &:nth-child(4n) {
+      background-color: $c4;
+    }
+     &:nth-child(5n) {
+      background-color: $c1;
+    }
+     &:nth-child(6n) {
+      background-color: $c2;
+    }
+    &:nth-child(7n) {
+      background-color: $c4;
+    }
+    &:nth-child(8n) {
+      background-color: $c3;
+    }
+    &:nth-child(9n) {
+      height: 110px;
+      width:100%;
+      background-color: $c1;
+      background-image:none;
+    }
+    &:nth-child(10n) {
+      background-color: $c2;
+    }
+    &:nth-child(11n) {
+      background-color: $c3;
+    }
+  }
+   
+   
+    .reveal h2 {
+      color: $c1 !important;
+      background-color: $c4 !important;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+  body {
+    min-width: 720px;
+    max-width:1023px;
+    width: 100%;
+  }
+  .reveal .slides {
+    font-size: 0.62em;
+    
+  }
+  
+  $default-margin-left: 40px;
+  $default-margin-bottom: 10px;
+  $default-small-margin: 5px;
+  $default-small-padding: 5px;
+  $max-code-height: 400px;
+  @import "defaults";
+
+  $slide-max-width: 1023px;
+  $slide-min-height: 500px;
+  $slide-width: 100%;
+  $slide-left: 50%;
+  $slide-top: 50%;
+  $slide-section-padding: 30px;
+  @import "slides";
+  
+  //$padding-left:10px;
+  $grid-max-width: 1023px;
+  $grid-min-width: 720px;
+  $grid-col-size: 25%;
+  @import "grid";
+  
+  .reveal li {
+    height: 150px;
+    background-image:none;
+     &:nth-child(5) {
+      height: 110px;
+      width:100%;
+      background-color: $c1;
+      background-image:none;
+    }
+     &:nth-child(9n) {
+      height: 150px;
+      width:25%;
+      background-color: $c1;
+      background-image:none;
+    }
+    &:nth-child(n+10) {
+      height: 150px;
+      width:50%;
+ 
+    }
+  }
+  
+}
+
+
+@media only screen and (min-width: 1024px) {
+  body {
+    min-width: 1024px;
+    max-width:1200px;
+   
+  }
+  .reveal .slides {
+    font-size: 0.62em;
+    
+  }
+  
+  $default-margin-left: 40px;
+  $default-margin-bottom: 10px;
+  $default-small-margin: 5px;
+  $default-small-padding: 5px;
+  $max-code-height: 400px;
+  @import "defaults";
+
+  $slide-max-width: 1200px;
+  $slide-min-height:500px;
+  $slide-width: 100%;
+  $slide-left: 50%;
+  $slide-top: 50%;
+  $slide-section-padding: 30px;
+  @import "slides";
+  
+  //$padding-left:10px;
+  $grid-max-width: 1200px;
+  $grid-min-width: 1024px;
+  $grid-col-size: 20%;
+  @import "grid";
+  
+  .reveal li {
+    height: 150px;
+    background-image:none;
+    
+     &:nth-child(6) {
+      height: 150px;
+      width:100%;
+      background-color: $c1;
+      background-image:none;
+    }
+     &:nth-child(9n),&:nth-child(5), &:nth-child(n+10) {
+      height: 150px;
+      width:20%;
+    }
+     &:nth-child(9n),&:nth-child(5){
+      height: 150px;
+      width:20%;
+      background-color: $c1;
+      background-image:none;
+    }
+  }
+}
+
+

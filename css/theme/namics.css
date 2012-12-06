@@ -1,0 +1,265 @@
+/**
+ * Default theme for reveal.js.
+ * 
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+/* line 37, source/namics.scss */
+strong {
+  color: #a9c400;
+}
+
+/* line 41, source/namics.scss */
+.col, ul, li {
+  background-color: #a9c400;
+}
+
+/* line 46, source/namics.scss */
+video {
+  background-color: black;
+  width: 100%;
+  height: 180px;
+}
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+/* line 7, template/theme.scss */
+body {
+  background-color: white;
+}
+
+/* line 12, template/theme.scss */
+.reveal {
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size: 26px;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: #432752;
+}
+
+/* line 20, template/theme.scss */
+::selection {
+  color: white;
+  background: #ff5e99;
+  text-shadow: none;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+/* line 35, template/theme.scss */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 0 0;
+  color: #432752;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 0.9em;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* line 48, template/theme.scss */
+.reveal h1 {
+  text-shadow: none;
+}
+
+/* line 52, template/theme.scss */
+.reveal h2 {
+  color: #a9c400;
+  background-color: #b432a6;
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+/* line 61, template/theme.scss */
+.reveal a:not(.image) {
+  color: #432752;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+/* line 71, template/theme.scss */
+.reveal a:not(.image):hover {
+  color: #7b4897;
+  text-shadow: none;
+  border: none;
+}
+
+/* line 78, template/theme.scss */
+.reveal .roll span:after {
+  color: #fff;
+  background: #190e1e;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+/* line 88, template/theme.scss */
+.reveal section img {
+  margin: 0;
+  padding: 0;
+  /*background: rgba(255,255,255,0.12);
+  border: 4px solid $mainColor;
+  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  */
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+/* line 102, template/theme.scss */
+.reveal section img:not(.col) {
+  width: 100%;
+}
+
+/* line 107, template/theme.scss */
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #432752;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+/* line 120, template/theme.scss */
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #432752;
+}
+
+/* line 125, template/theme.scss */
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #432752;
+}
+
+/* line 130, template/theme.scss */
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #432752;
+}
+
+/* line 135, template/theme.scss */
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #432752;
+}
+
+/* line 139, template/theme.scss */
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #7b4897;
+}
+
+/* line 143, template/theme.scss */
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #7b4897;
+}
+
+/* line 147, template/theme.scss */
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #7b4897;
+}
+
+/* line 151, template/theme.scss */
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #7b4897;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+/* line 160, template/theme.scss */
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* line 163, template/theme.scss */
+.reveal .progress span {
+  background: #432752;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/* line 177, template/theme.scss */
+.reveal li .a {
+  color: #432752;
+}
+
+/* line 55, source/namics.scss */
+p.quote {
+  padding: 20px 30px 50px 30px;
+  background-color: #a9c400;
+  color: white;
+  background-image: url("../../lib/img/nav.png");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-position-x: 30px;
+}
+/* line 64, source/namics.scss */
+p.quote quote {
+  font-size: 2.4em;
+  line-height: 1em;
+  color: white;
+  display: block;
+  padding: 20px 0;
+}
+/* line 72, source/namics.scss */
+p.quote quote:before {
+  content: "«";
+}
+/* line 76, source/namics.scss */
+p.quote quote:after {
+  content: "»";
+}
+
+/* line 81, source/namics.scss */
+video {
+  margin: 0 0 20px 0;
+}
+
+/* line 84, source/namics.scss */
+p.reference, h3.reference {
+  padding: 0 30px 20px 30px;
+  color: #a71680;
+}
+
+/* line 89, source/namics.scss */
+.col h3, .col h4, .col p {
+  color: white;
+}
+/* line 93, source/namics.scss */
+.col h3 {
+  padding: 20px 5px 0px 30px;
+}
+/* line 96, source/namics.scss */
+.col h4 {
+  padding: 10px 5px 0 30px;
+}
+/* line 99, source/namics.scss */
+.col p {
+  padding: 5px 5px 0 30px;
+  font-size: 0.8em;
+}
+
+/* line 104, source/namics.scss */
+.colorized {
+  background-color: #a9c400;
+}

@@ -1,0 +1,29 @@
+
+/*********************************************
+ * Custom 
+ *********************************************/
+
+.menubutton {
+  display: none;
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  z-index: 30;
+  right: 10px;
+  top: 10px;
+}
+
+.closebutton {
+  display: none;
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  z-index: 30;
+  right: 10px;
+  top: 10px;
+}
+
+.vertical {
+  overflow: scroll;
+  max-height: 400px;
+}
