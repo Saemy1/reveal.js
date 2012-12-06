@@ -974,9 +974,9 @@ var Reveal = (function(){
 				if( isOverviewActive() === false ) {
 					// The distance loops so that it measures 1 between the first
 					// and last slides
-					var distance = Math.abs( ( index - i ) % ( slidesLength - 3 ) ) || 0;
+					//var distance = Math.abs( ( index - i ) % ( slidesLength - 10 ) ) || 0;
 
-					element.style.display = distance > 3 ? 'none' : 'block';
+					element.style.display =  'block';
 				}
 
 				slides[i].classList.remove( 'past' );
