@@ -62,8 +62,8 @@ body {
 
 /* line 22, reveal/_global.scss */
 ::selection {
-  background: white;
-  background-color: white;
+  background: #FDFDDA;
+  background-color: #fdfdda;
   color: black;
   text-shadow: none;
 }
@@ -1354,13 +1354,13 @@ ul.subnav {
 
 /* line 73, reveal/_grid.scss */
 .subnav li:first-child {
-  background-color: #a71680;
+  background-color: #b432a6;
   background-image: none;
 }
 
 /* line 78, reveal/_grid.scss */
 .subnav li:last-child {
-  background-color: #472753;
+  background-color: #432752;
   background-image: none;
 }
 
@@ -1399,14 +1399,14 @@ ul.subnav {
  * MEDIA Queryies
  *********************************************/
 @media only screen and (min-width: 480px) {
-  /* line 63, reveal/reveal.scss */
+  /* line 58, reveal/reveal.scss */
   body {
     min-width: 480px;
     max-width: 719px;
     width: 100%;
   }
 
-  /* line 68, reveal/reveal.scss */
+  /* line 63, reveal/reveal.scss */
   .reveal .slides {
     font-size: 0.52em;
   }
@@ -1757,89 +1757,36 @@ ul.subnav {
 
   /* line 73, reveal/_grid.scss */
   .subnav li:first-child {
-    background-color: #a71680;
+    background-color: #b432a6;
     background-image: none;
   }
 
   /* line 78, reveal/_grid.scss */
   .subnav li:last-child {
-    background-color: #472753;
+    background-color: #432752;
     background-image: none;
   }
 
-  /* line 96, reveal/reveal.scss */
+  /* line 91, reveal/reveal.scss */
   .reveal li {
     height: 110px;
-    background-image: none;
     word-wrap: break-word;
   }
-  /* line 100, reveal/reveal.scss */
-  .reveal li a, .reveal li a:link, .reveal li a:hover, .reveal li a:visited, .reveal li a:active {
-    color: white;
-  }
-  /* line 103, reveal/reveal.scss */
-  .reveal li:nth-child(2n) {
-    background-color: #432752;
-  }
-  /* line 106, reveal/reveal.scss */
-  .reveal li:nth-child(2n+1) {
-    background-color: #b432a6;
-  }
-  /* line 109, reveal/reveal.scss */
-  .reveal li:nth-child(3n) {
-    background-color: black;
-  }
-  /* line 112, reveal/reveal.scss */
-  .reveal li:nth-child(4n) {
-    background-color: #a9c400;
-  }
-  /* line 115, reveal/reveal.scss */
-  .reveal li:nth-child(5n) {
-    background-color: #432752;
-  }
-  /* line 118, reveal/reveal.scss */
-  .reveal li:nth-child(6n) {
-    background-color: #b432a6;
-  }
-  /* line 121, reveal/reveal.scss */
-  .reveal li:nth-child(7n) {
-    background-color: #a9c400;
-  }
-  /* line 124, reveal/reveal.scss */
-  .reveal li:nth-child(8n) {
-    background-color: black;
-  }
-  /* line 127, reveal/reveal.scss */
+  /* line 94, reveal/reveal.scss */
   .reveal li:nth-child(9n) {
     height: 110px;
     width: 100%;
-    background-color: #432752;
-    background-image: none;
-  }
-  /* line 133, reveal/reveal.scss */
-  .reveal li:nth-child(10n) {
-    background-color: #b432a6;
-  }
-  /* line 136, reveal/reveal.scss */
-  .reveal li:nth-child(11n) {
-    background-color: black;
-  }
-
-  /* line 142, reveal/reveal.scss */
-  .reveal h2 {
-    color: #432752 !important;
-    background-color: #a9c400 !important;
   }
 }
 @media only screen and (min-width: 720px) {
-  /* line 149, reveal/reveal.scss */
+  /* line 103, reveal/reveal.scss */
   body {
     min-width: 720px;
     max-width: 1023px;
     width: 100%;
   }
 
-  /* line 154, reveal/reveal.scss */
+  /* line 108, reveal/reveal.scss */
   .reveal .slides {
     font-size: 0.62em;
   }
@@ -2190,49 +2137,44 @@ ul.subnav {
 
   /* line 73, reveal/_grid.scss */
   .subnav li:first-child {
-    background-color: #a71680;
+    background-color: #b432a6;
     background-image: none;
   }
 
   /* line 78, reveal/_grid.scss */
   .subnav li:last-child {
-    background-color: #472753;
+    background-color: #432752;
     background-image: none;
   }
 
-  /* line 180, reveal/reveal.scss */
+  /* line 134, reveal/reveal.scss */
   .reveal li {
     height: 150px;
-    background-image: none;
   }
-  /* line 183, reveal/reveal.scss */
+  /* line 136, reveal/reveal.scss */
   .reveal li:nth-child(5) {
     height: 110px;
     width: 100%;
-    background-color: #432752;
-    background-image: none;
   }
-  /* line 189, reveal/reveal.scss */
+  /* line 140, reveal/reveal.scss */
   .reveal li:nth-child(9n) {
     height: 150px;
     width: 25%;
-    background-color: #432752;
-    background-image: none;
   }
-  /* line 195, reveal/reveal.scss */
+  /* line 144, reveal/reveal.scss */
   .reveal li:nth-child(n+10) {
     height: 150px;
     width: 50%;
   }
 }
 @media only screen and (min-width: 1024px) {
-  /* line 206, reveal/reveal.scss */
+  /* line 154, reveal/reveal.scss */
   body {
     min-width: 1024px;
     max-width: 1200px;
   }
 
-  /* line 211, reveal/reveal.scss */
+  /* line 159, reveal/reveal.scss */
   .reveal .slides {
     font-size: 0.62em;
   }
@@ -2583,38 +2525,33 @@ ul.subnav {
 
   /* line 73, reveal/_grid.scss */
   .subnav li:first-child {
-    background-color: #a71680;
+    background-color: #b432a6;
     background-image: none;
   }
 
   /* line 78, reveal/_grid.scss */
   .subnav li:last-child {
-    background-color: #472753;
-    background-image: none;
-  }
-
-  /* line 237, reveal/reveal.scss */
-  .reveal li {
-    height: 150px;
-    background-image: none;
-  }
-  /* line 241, reveal/reveal.scss */
-  .reveal li:nth-child(6) {
-    height: 150px;
-    width: 100%;
     background-color: #432752;
     background-image: none;
   }
-  /* line 247, reveal/reveal.scss */
+
+  /* line 185, reveal/reveal.scss */
+  .reveal li {
+    height: 150px;
+  }
+  /* line 188, reveal/reveal.scss */
+  .reveal li:nth-child(6) {
+    height: 150px;
+    width: 100%;
+  }
+  /* line 192, reveal/reveal.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5), .reveal li:nth-child(n+10) {
     height: 150px;
     width: 20%;
   }
-  /* line 251, reveal/reveal.scss */
+  /* line 196, reveal/reveal.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5) {
     height: 150px;
     width: 20%;
-    background-color: #432752;
-    background-image: none;
   }
 }

@@ -27,6 +27,13 @@ $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: #FF5E99;
 $selectionColor: #fff;
 
+$color0: #FFFFFF; //White
+$color1: #432752; //Violett
+$color2: #B432A6; //Pink
+$color3: #A9C400; //Green
+$color4: #000000; //Black
+$color5: #FF5E99; //pink 2
+
 // Generates the presentation background, can be overridden
 // to return a background image or gradient
 @mixin bodyBackground() {

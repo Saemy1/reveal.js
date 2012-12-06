@@ -8,11 +8,10 @@
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 $padding-left:30px;
-$color1: #a71680;
-$color2: #472753;
+$color1: #B432A6;
+$color2: #432752;
 @import "reset";
  
-$selection-bg-color: #FFF;
 @import "global";
 @import "headers";
 @import "fragments"; 
@@ -55,10 +54,6 @@ $grid-col-size: 280px;
 /*********************************************
  * MEDIA Queryies
  *********************************************/
-$c1: #432752;
-  $c2: #B432A6;
-  $c3: #000;
-  $c4: #A9C400;
 @media only screen and (min-width: 480px) {
   body {
     min-width: 480px;
@@ -95,54 +90,13 @@ $c1: #432752;
   
    .reveal li {
     height: 110px;
-    background-image:none;
     word-wrap: break-word;
-    a, a:link, a:hover, a:visited, a:active {
-      color: white;
-    }
-    &:nth-child(2n) {
-      background-color: $c1;
-    }
-     &:nth-child(2n+1) {
-      background-color: $c2;
-    }
-     &:nth-child(3n) {
-      background-color: $c3;
-    }
-     &:nth-child(4n) {
-      background-color: $c4;
-    }
-     &:nth-child(5n) {
-      background-color: $c1;
-    }
-     &:nth-child(6n) {
-      background-color: $c2;
-    }
-    &:nth-child(7n) {
-      background-color: $c4;
-    }
-    &:nth-child(8n) {
-      background-color: $c3;
-    }
     &:nth-child(9n) {
       height: 110px;
       width:100%;
-      background-color: $c1;
-      background-image:none;
-    }
-    &:nth-child(10n) {
-      background-color: $c2;
-    }
-    &:nth-child(11n) {
-      background-color: $c3;
     }
   }
    
-   
-    .reveal h2 {
-      color: $c1 !important;
-      background-color: $c4 !important;
-    }
 }
 
 @media only screen and (min-width: 720px) {
@@ -179,23 +133,17 @@ $c1: #432752;
   
   .reveal li {
     height: 150px;
-    background-image:none;
      &:nth-child(5) {
       height: 110px;
       width:100%;
-      background-color: $c1;
-      background-image:none;
     }
      &:nth-child(9n) {
       height: 150px;
       width:25%;
-      background-color: $c1;
-      background-image:none;
     }
     &:nth-child(n+10) {
       height: 150px;
       width:50%;
- 
     }
   }
   
@@ -236,13 +184,10 @@ $c1: #432752;
   
   .reveal li {
     height: 150px;
-    background-image:none;
     
      &:nth-child(6) {
       height: 150px;
       width:100%;
-      background-color: $c1;
-      background-image:none;
     }
      &:nth-child(9n),&:nth-child(5), &:nth-child(n+10) {
       height: 150px;
@@ -251,8 +196,6 @@ $c1: #432752;
      &:nth-child(9n),&:nth-child(5){
       height: 150px;
       width:20%;
-      background-color: $c1;
-      background-image:none;
     }
   }
 }

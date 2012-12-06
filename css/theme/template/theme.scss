@@ -1,5 +1,5 @@
 // Base theme template for reveal.js
-
+@import "compass/utilities/color/contrast";
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -178,4 +178,193 @@ body {
     color: $linkColor;
   }
 }
+
+
+/*********************************************
+ * Colors
+ *********************************************/
+::selection {
+  background: $color5; 
+  @include contrasted($color5);
+  text-shadow: none;
+}
+
+/*********************************************
+ * Grid
+ *********************************************/
+
+.reveal li {
+  background-image: url('../../lib/img/nav.png');
+}
+
+.subnav li {
+  &>a,&>a:link, &>a:active,  &>a:hover, &>a:visited  {
+    color:$color0;
+  }
+}
+
+.subnav li:first-child {
+  background-color: $color1;
+  background-image: none;
+}
+
+.subnav li:last-child {
+  background-color: $color2;
+  background-image: none;
+}
+
+
+/*********************************************
+ * MEDIA Queryies
+ *********************************************/
+@media only screen and (min-width: 480px) {
+  
+   .reveal li {
+    background-image:none;
+    a, a:link, a:hover, a:visited, a:active {
+      color: white;
+    }
+    &:nth-child(2n) {
+      background-color: $color1;
+    }
+     &:nth-child(2n+1) {
+      background-color: $color2;
+    }
+     &:nth-child(3n) {
+      background-color: $color4;
+    }
+     &:nth-child(4n) {
+      background-color: $color3;
+    }
+     &:nth-child(5n) {
+      background-color: $color1;
+    }
+     &:nth-child(6n) {
+      background-color: $color2;
+    }
+    &:nth-child(7n) {
+      background-color: $color3;
+    }
+    &:nth-child(8n) {
+      background-color: $color4;
+    }
+    &:nth-child(9n) {
+      background-color: $color1;
+      background-image:none;
+    }
+    &:nth-child(10n) {
+      background-color: $color2;
+    }
+    &:nth-child(11n) {
+      background-color: $color4;
+    }
+  }
+    .reveal h2 {
+      color: $color1 !important;
+      background-color: $color3 !important;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+  
+  .reveal li {
+    background-image:none;
+     &:nth-child(5) {
+      background-color: $color1;
+      background-image:none;
+    }
+     &:nth-child(9n) {
+      background-color: $color1;
+      background-image:none;
+    }
+  }
+  
+}
+
+@media only screen and (min-width: 1024px) {
+  .reveal li {
+    background-image:none;
+    
+     &:nth-child(6) {
+      background-color: $color1;
+      background-image:none;
+    }
+     &:nth-child(9n),&:nth-child(5){
+      background-color: $color1;
+      background-image:none;
+    }
+  }
+}
+
+
+strong {
+  color: $heading2Color;
+}
+ 
+.col, ul, li {
+  background-color:$heading2Color;
+}
+
+
+video {
+  background-color: black;
+  width:100%;
+  height: 180px;
+}
+
+p.quote {
+   padding: 20px 30px 50px 30px;
+  background-color: $heading2Color;
+  color: $backgroundColor;
+  background-image: url("../../lib/img/nav.png");
+  background-repeat: no-repeat; 
+  background-position: bottom left;
+  background-position-x: 30px ; 
+  
+  quote { 
+    font-size: 2.4em;
+    line-height: 1em;
+    color: $backgroundColor;
+    display: block;
+    padding: 20px 0;
+  }
+  
+  quote:before {
+    content: "«"
+    
+  }
+  quote:after {
+    content: "»"
+    
+  }
+}
+video {
+  margin: 0 0 20px 0;
+}
+p.reference, h3.reference {
+   padding: 0 30px 20px 30px;
+   color: $color2;
+}
+ .col {
+  h3, h4,p{
+  
+    color: white;
+   }
+   h3 {
+       padding: 20px 5px 0px 30px;
+   }
+   h4 {
+       padding:10px 5px 0 30px;
+   }
+   p {
+       padding:5px 5px 0 30px;
+       font-size: 0.8em;
+   }
+ }
+ .colorized {
+   background-color: $heading2Color;
+ }
+
+
+
 

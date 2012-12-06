@@ -17,7 +17,7 @@ body {
   font-size: 26px;
   font-weight: 200;
   letter-spacing: -0.02em;
-  color: #432752;
+  color: #34523d;
 }
 
 /* line 20, template/theme.scss */
@@ -38,7 +38,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 0 0;
-  color: #432752;
+  color: #34523d;
   font-family: Arial, Verdana, Helvetica, sans-serif;
   font-weight: bold;
   line-height: 0.9em;
@@ -54,8 +54,8 @@ body {
 
 /* line 52, template/theme.scss */
 .reveal h2 {
-  color: #a9c400;
-  background-color: #b432a6;
+  color: #02c42f;
+  background-color: #bd3465;
 }
 
 /*********************************************
@@ -63,7 +63,7 @@ body {
  *********************************************/
 /* line 61, template/theme.scss */
 .reveal a:not(.image) {
-  color: #432752;
+  color: #34523d;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -74,7 +74,7 @@ body {
 
 /* line 71, template/theme.scss */
 .reveal a:not(.image):hover {
-  color: #7b4897;
+  color: #5c906b;
   text-shadow: none;
   border: none;
 }
@@ -82,7 +82,7 @@ body {
 /* line 78, template/theme.scss */
 .reveal .roll span:after {
   color: #fff;
-  background: #190e1e;
+  background: #16231a;
 }
 
 /*********************************************
@@ -112,7 +112,7 @@ body {
 /* line 107, template/theme.scss */
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #432752;
+  border-color: #34523d;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
@@ -122,45 +122,45 @@ body {
 /* line 120, template/theme.scss */
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: #432752;
+  border-right-color: #34523d;
 }
 
 /* line 125, template/theme.scss */
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: #432752;
+  border-left-color: #34523d;
 }
 
 /* line 130, template/theme.scss */
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: #432752;
+  border-bottom-color: #34523d;
 }
 
 /* line 135, template/theme.scss */
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-  border-top-color: #432752;
+  border-top-color: #34523d;
 }
 
 /* line 139, template/theme.scss */
 .reveal .controls div.navigate-left.enabled:hover {
-  border-right-color: #7b4897;
+  border-right-color: #5c906b;
 }
 
 /* line 143, template/theme.scss */
 .reveal .controls div.navigate-right.enabled:hover {
-  border-left-color: #7b4897;
+  border-left-color: #5c906b;
 }
 
 /* line 147, template/theme.scss */
 .reveal .controls div.navigate-up.enabled:hover {
-  border-bottom-color: #7b4897;
+  border-bottom-color: #5c906b;
 }
 
 /* line 151, template/theme.scss */
 .reveal .controls div.navigate-down.enabled:hover {
-  border-top-color: #7b4897;
+  border-top-color: #5c906b;
 }
 
 /*********************************************
@@ -173,7 +173,7 @@ body {
 
 /* line 163, template/theme.scss */
 .reveal .progress span {
-  background: #432752;
+  background: #34523d;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -183,7 +183,7 @@ body {
 
 /* line 177, template/theme.scss */
 .reveal li .a {
-  color: #432752;
+  color: #34523d;
 }
 
 /*********************************************
@@ -191,8 +191,8 @@ body {
  *********************************************/
 /* line 186, template/theme.scss */
 ::selection {
-  background: #ff5e99;
-  background-color: #ff5e99;
+  background: #123fcd;
+  background-color: #123fcd;
   color: black;
   text-shadow: none;
 }
@@ -212,13 +212,13 @@ body {
 
 /* line 206, template/theme.scss */
 .subnav li:first-child {
-  background-color: #432752;
+  background-color: #34523d;
   background-image: none;
 }
 
 /* line 211, template/theme.scss */
 .subnav li:last-child {
-  background-color: #b432a6;
+  background-color: #bd3465;
   background-image: none;
 }
 
@@ -236,54 +236,54 @@ body {
   }
   /* line 227, template/theme.scss */
   .reveal li:nth-child(2n) {
-    background-color: #432752;
+    background-color: #34523d;
   }
   /* line 230, template/theme.scss */
   .reveal li:nth-child(2n+1) {
-    background-color: #b432a6;
+    background-color: #bd3465;
   }
   /* line 233, template/theme.scss */
   .reveal li:nth-child(3n) {
-    background-color: black;
+    background-color: #0a0f0f;
   }
   /* line 236, template/theme.scss */
   .reveal li:nth-child(4n) {
-    background-color: #a9c400;
+    background-color: #02c42f;
   }
   /* line 239, template/theme.scss */
   .reveal li:nth-child(5n) {
-    background-color: #432752;
+    background-color: #34523d;
   }
   /* line 242, template/theme.scss */
   .reveal li:nth-child(6n) {
-    background-color: #b432a6;
+    background-color: #bd3465;
   }
   /* line 245, template/theme.scss */
   .reveal li:nth-child(7n) {
-    background-color: #a9c400;
+    background-color: #02c42f;
   }
   /* line 248, template/theme.scss */
   .reveal li:nth-child(8n) {
-    background-color: black;
+    background-color: #0a0f0f;
   }
   /* line 251, template/theme.scss */
   .reveal li:nth-child(9n) {
-    background-color: #432752;
+    background-color: #34523d;
     background-image: none;
   }
   /* line 255, template/theme.scss */
   .reveal li:nth-child(10n) {
-    background-color: #b432a6;
+    background-color: #bd3465;
   }
   /* line 258, template/theme.scss */
   .reveal li:nth-child(11n) {
-    background-color: black;
+    background-color: #0a0f0f;
   }
 
   /* line 262, template/theme.scss */
   .reveal h2 {
-    color: #432752 !important;
-    background-color: #a9c400 !important;
+    color: #34523d !important;
+    background-color: #02c42f !important;
   }
 }
 @media only screen and (min-width: 720px) {
@@ -293,12 +293,12 @@ body {
   }
   /* line 272, template/theme.scss */
   .reveal li:nth-child(5) {
-    background-color: #432752;
+    background-color: #34523d;
     background-image: none;
   }
   /* line 276, template/theme.scss */
   .reveal li:nth-child(9n) {
-    background-color: #432752;
+    background-color: #34523d;
     background-image: none;
   }
 }
@@ -309,23 +309,23 @@ body {
   }
   /* line 288, template/theme.scss */
   .reveal li:nth-child(6) {
-    background-color: #432752;
+    background-color: #34523d;
     background-image: none;
   }
   /* line 292, template/theme.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5) {
-    background-color: #432752;
+    background-color: #34523d;
     background-image: none;
   }
 }
 /* line 300, template/theme.scss */
 strong {
-  color: #a9c400;
+  color: #02c42f;
 }
 
 /* line 304, template/theme.scss */
 .col, ul, li {
-  background-color: #a9c400;
+  background-color: #02c42f;
 }
 
 /* line 309, template/theme.scss */
@@ -338,7 +338,7 @@ video {
 /* line 315, template/theme.scss */
 p.quote {
   padding: 20px 30px 50px 30px;
-  background-color: #a9c400;
+  background-color: #02c42f;
   color: white;
   background-image: url("../../lib/img/nav.png");
   background-repeat: no-repeat;
@@ -370,7 +370,7 @@ video {
 /* line 344, template/theme.scss */
 p.reference, h3.reference {
   padding: 0 30px 20px 30px;
-  color: #b432a6;
+  color: #bd3465;
 }
 
 /* line 349, template/theme.scss */
@@ -393,5 +393,5 @@ p.reference, h3.reference {
 
 /* line 364, template/theme.scss */
 .colorized {
-  background-color: #a9c400;
+  background-color: #02c42f;
 }

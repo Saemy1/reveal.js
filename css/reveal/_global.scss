@@ -20,8 +20,8 @@ body {
 }
 
 ::selection {
-  background: $selection-bg-color; 
-  @include contrasted($selection-bg-color);
+  background:#FDFDDA; 
+  @include contrasted(#FDFDDA);
   text-shadow: none;
 }
 
