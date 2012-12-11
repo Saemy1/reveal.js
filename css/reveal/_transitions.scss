@@ -21,7 +21,74 @@
       -ms-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
           transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
 }
+.reveal .slides>section.overlay {
+  display: block ;
+  opacity: 0;
 
+  -webkit-transform: none;
+     -moz-transform: none;
+      -ms-transform: none;
+          transform: none;
+}
+
+.reveal .slides>section.slideup {
+  animation: slideup 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+  -webkit-animation: slideup 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+  -moz-animation: slideup 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+  -o-animation: slideup 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+          
+
+}
+@keyframes slideup {
+  from {
+    margin-top: 2600px;
+   
+  }
+ 
+  to {
+    margin-top: 20px;
+   
+  }
+}
+@-webkit-keyframes slideup {
+  from {
+    margin-top: 2600px;
+   
+  }
+ 
+  to {
+    margin-top: 20px;
+   
+  }
+}
+
+@-moz-keyframes slideup /* Firefox */
+{
+from {
+    margin-top: 2600px;
+   
+  }
+ 
+  to {
+    margin-top: 20px;
+   
+  }
+}
+
+
+
+@-o-keyframes slideup /* Opera */
+{
+  from {
+    margin-top: 2600px;
+   
+  }
+ 
+  to {
+    margin-top: 20px;
+   
+  }
+}
 .reveal .slides>section>section.past {
   display: block;
   opacity: 0;

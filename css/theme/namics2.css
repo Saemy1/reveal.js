@@ -173,7 +173,6 @@ body {
 
 /* line 163, template/theme.scss */
 .reveal .progress span {
-  background: #34523d;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -181,7 +180,7 @@ body {
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
 }
 
-/* line 177, template/theme.scss */
+/* line 176, template/theme.scss */
 .reveal li .a {
   color: #34523d;
 }
@@ -189,7 +188,7 @@ body {
 /*********************************************
  * Colors
  *********************************************/
-/* line 186, template/theme.scss */
+/* line 185, template/theme.scss */
 ::selection {
   background: #123fcd;
   background-color: #123fcd;
@@ -200,142 +199,141 @@ body {
 /*********************************************
  * Grid
  *********************************************/
-/* line 196, template/theme.scss */
-.reveal li {
-  background-image: url("../../lib/img/nav.png");
+/* line 195, template/theme.scss */
+.reveal ul {
+  width: 100%;
 }
 
-/* line 201, template/theme.scss */
+/* line 200, template/theme.scss */
 .subnav li > a, .subnav li > a:link, .subnav li > a:active, .subnav li > a:hover, .subnav li > a:visited {
   color: white;
 }
 
-/* line 206, template/theme.scss */
+/* line 205, template/theme.scss */
 .subnav li:first-child {
   background-color: #34523d;
   background-image: none;
 }
 
-/* line 211, template/theme.scss */
+/* line 210, template/theme.scss */
 .subnav li:last-child {
   background-color: #bd3465;
   background-image: none;
 }
 
+/* line 215, template/theme.scss */
+.reveal li {
+  background-image: none;
+}
+/* line 218, template/theme.scss */
+.reveal li a, .reveal li a:link, .reveal li a:hover, .reveal li a:visited, .reveal li a:active {
+  color: white;
+}
+/* line 221, template/theme.scss */
+.reveal li:nth-child(2n) {
+  background-color: #34523d;
+}
+/* line 224, template/theme.scss */
+.reveal li:nth-child(2n+1) {
+  background-color: #bd3465;
+}
+/* line 227, template/theme.scss */
+.reveal li:nth-child(3n) {
+  background-color: #0a0f0f;
+}
+/* line 230, template/theme.scss */
+.reveal li:nth-child(4n) {
+  background-color: #02c42f;
+}
+/* line 233, template/theme.scss */
+.reveal li:nth-child(5n) {
+  background-color: #34523d;
+}
+/* line 236, template/theme.scss */
+.reveal li:nth-child(6n) {
+  background-color: #bd3465;
+}
+/* line 239, template/theme.scss */
+.reveal li:nth-child(7n) {
+  background-color: #02c42f;
+}
+/* line 242, template/theme.scss */
+.reveal li:nth-child(8n) {
+  background-color: #0a0f0f;
+}
+/* line 245, template/theme.scss */
+.reveal li:nth-child(9n) {
+  background-color: #34523d;
+  background-image: none;
+}
+/* line 249, template/theme.scss */
+.reveal li:nth-child(10n) {
+  background-color: #bd3465;
+}
+/* line 252, template/theme.scss */
+.reveal li:nth-child(11n) {
+  background-color: #0a0f0f;
+}
+
+/* line 256, template/theme.scss */
+.reveal h2 {
+  color: #34523d !important;
+  background-color: #02c42f !important;
+}
+
 /*********************************************
  * MEDIA Queryies
  *********************************************/
-@media only screen and (min-width: 480px) {
-  /* line 222, template/theme.scss */
-  .reveal li {
-    background-image: none;
-  }
-  /* line 224, template/theme.scss */
-  .reveal li a, .reveal li a:link, .reveal li a:hover, .reveal li a:visited, .reveal li a:active {
-    color: white;
-  }
-  /* line 227, template/theme.scss */
-  .reveal li:nth-child(2n) {
-    background-color: #34523d;
-  }
-  /* line 230, template/theme.scss */
-  .reveal li:nth-child(2n+1) {
-    background-color: #bd3465;
-  }
-  /* line 233, template/theme.scss */
-  .reveal li:nth-child(3n) {
-    background-color: #0a0f0f;
-  }
-  /* line 236, template/theme.scss */
-  .reveal li:nth-child(4n) {
-    background-color: #02c42f;
-  }
-  /* line 239, template/theme.scss */
-  .reveal li:nth-child(5n) {
-    background-color: #34523d;
-  }
-  /* line 242, template/theme.scss */
-  .reveal li:nth-child(6n) {
-    background-color: #bd3465;
-  }
-  /* line 245, template/theme.scss */
-  .reveal li:nth-child(7n) {
-    background-color: #02c42f;
-  }
-  /* line 248, template/theme.scss */
-  .reveal li:nth-child(8n) {
-    background-color: #0a0f0f;
-  }
-  /* line 251, template/theme.scss */
-  .reveal li:nth-child(9n) {
-    background-color: #34523d;
-    background-image: none;
-  }
-  /* line 255, template/theme.scss */
-  .reveal li:nth-child(10n) {
-    background-color: #bd3465;
-  }
-  /* line 258, template/theme.scss */
-  .reveal li:nth-child(11n) {
-    background-color: #0a0f0f;
-  }
-
-  /* line 262, template/theme.scss */
-  .reveal h2 {
-    color: #34523d !important;
-    background-color: #02c42f !important;
-  }
-}
 @media only screen and (min-width: 720px) {
-  /* line 270, template/theme.scss */
+  /* line 266, template/theme.scss */
   .reveal li {
     background-image: none;
   }
-  /* line 272, template/theme.scss */
+  /* line 268, template/theme.scss */
   .reveal li:nth-child(5) {
     background-color: #34523d;
     background-image: none;
   }
-  /* line 276, template/theme.scss */
+  /* line 272, template/theme.scss */
   .reveal li:nth-child(9n) {
     background-color: #34523d;
     background-image: none;
   }
 }
 @media only screen and (min-width: 1024px) {
-  /* line 285, template/theme.scss */
+  /* line 281, template/theme.scss */
   .reveal li {
     background-image: none;
   }
-  /* line 288, template/theme.scss */
+  /* line 284, template/theme.scss */
   .reveal li:nth-child(6) {
     background-color: #34523d;
     background-image: none;
   }
-  /* line 292, template/theme.scss */
+  /* line 288, template/theme.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5) {
     background-color: #34523d;
     background-image: none;
   }
 }
-/* line 300, template/theme.scss */
+/* line 296, template/theme.scss */
 strong {
   color: #02c42f;
 }
 
-/* line 304, template/theme.scss */
+/* line 300, template/theme.scss */
 .col, ul, li {
   background-color: #02c42f;
 }
 
-/* line 309, template/theme.scss */
+/* line 305, template/theme.scss */
 video {
   background-color: black;
   width: 100%;
   height: 180px;
 }
 
-/* line 315, template/theme.scss */
+/* line 311, template/theme.scss */
 p.quote {
   padding: 20px 30px 50px 30px;
   background-color: #02c42f;
@@ -345,7 +343,7 @@ p.quote {
   background-position: bottom left;
   background-position-x: 30px;
 }
-/* line 324, template/theme.scss */
+/* line 320, template/theme.scss */
 p.quote quote {
   font-size: 2.4em;
   line-height: 1em;
@@ -353,45 +351,45 @@ p.quote quote {
   display: block;
   padding: 20px 0;
 }
-/* line 332, template/theme.scss */
+/* line 328, template/theme.scss */
 p.quote quote:before {
   content: "«";
 }
-/* line 336, template/theme.scss */
+/* line 332, template/theme.scss */
 p.quote quote:after {
   content: "»";
 }
 
-/* line 341, template/theme.scss */
+/* line 337, template/theme.scss */
 video {
   margin: 0 0 20px 0;
 }
 
-/* line 344, template/theme.scss */
+/* line 340, template/theme.scss */
 p.reference, h3.reference {
   padding: 0 30px 20px 30px;
   color: #bd3465;
 }
 
-/* line 349, template/theme.scss */
+/* line 345, template/theme.scss */
 .col h3, .col h4, .col p {
   color: white;
 }
-/* line 353, template/theme.scss */
+/* line 349, template/theme.scss */
 .col h3 {
   padding: 20px 5px 0px 30px;
 }
-/* line 356, template/theme.scss */
+/* line 352, template/theme.scss */
 .col h4 {
   padding: 10px 5px 0 30px;
 }
-/* line 359, template/theme.scss */
+/* line 355, template/theme.scss */
 .col p {
   padding: 5px 5px 0 30px;
   font-size: 0.8em;
 }
 
-/* line 364, template/theme.scss */
+/* line 360, template/theme.scss */
 .colorized {
   background-color: #02c42f;
 }

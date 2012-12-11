@@ -17,9 +17,7 @@ var Reveal = (function(){
 		
 		// Configurations defaults, can be overridden at initialization time
 		config = {
-			//STATEMACHINE: overview, show, isolate
-			state: 'overview',
-			
+						
 			// Display controls in the bottom right corner
 			controls: true,
 
@@ -146,6 +144,8 @@ var Reveal = (function(){
 		//Load Navi
 	 	$('#nav a').each(function() {
 		 	var hash  = this.href.split("#")[1];
+		 	hash = hash.replace('overflow/','');
+		
 		 	hash = hash.split('/')[1];	
 		 	//console.log(hash);
 		 	
@@ -172,8 +172,19 @@ var Reveal = (function(){
 		if( !dom.wrapper.querySelector( '.progress' ) && config.progress ) {
 			var progressElement = document.createElement( 'div' );
 			progressElement.classList.add( 'progress' );
-			progressElement.innerHTML = '<span></span>';
+			
+			var spans = '';
+			var before = '<span id="indexPrevious"><</span>';
+			var after = '<span id="indexNext">></span>';
+			var index = 0;
+			$("#nav > li").each(function() {
+				spans = spans + '<span id="index'+index++ +'">●</span>';
+			});
+			
+			progressElement.innerHTML =before + spans + after;
 			dom.wrapper.appendChild( progressElement );
+			
+			
 		}
 
 		// Menubutton 
@@ -247,9 +258,9 @@ var Reveal = (function(){
 	function hideAddressBar() {
 		if( navigator.userAgent.match( /(iphone|ipod)/i ) ) {
 			// Give the page some scrollable overflow
-			document.documentElement.style.overflow = 'scroll';
+			//document.documentElement.style.overflow = 'scroll';
 			document.body.style.height = '120%';
-
+			$(".reveal").height('120%');
 			// Events that should trigger the address bar to hide
 			window.addEventListener( 'load', removeAddressBar, false );
 			window.addEventListener( 'orientationchange', removeAddressBar, false );
@@ -415,6 +426,9 @@ var Reveal = (function(){
 
 		if ( config.progress && dom.progress ) {
 			dom.progress.addEventListener( 'click', preventAndForward( onProgressClick ), false );
+			$("#indexPrevious").get(0).addEventListener( 'click', preventAndForward( navigateLeft ), false );
+			$("#indexNext").get(0).addEventListener( 'click', preventAndForward( navigateRight ), false );
+			
 		}
 
 		if ( config.controls && dom.controls ) {
@@ -441,6 +455,8 @@ var Reveal = (function(){
 
 		if ( config.progress && dom.progress ) {
 			dom.progress.removeEventListener( 'click', preventAndForward( onProgressClick ), false );
+			$("#indexPrevious").get(0).removeEventListener( 'click', preventAndForward( navigateLeft ), false );
+			$("#indexNext").get(0).removeEventListener( 'click', preventAndForward( navigateRight ), false );
 		}
 
 		if ( config.controls && dom.controls ) {
@@ -803,9 +819,11 @@ var Reveal = (function(){
 		previousSlide = currentSlide;
 
 		if(v === undefined ||(h === 0 && v === 0)) {
-			$('.reveal').scrollTop(0);
+			setTimeout(function() {
+					$('.reveal').scrollTop(0);
+			},1)
 			console.log("scroll " + h + v);
-			
+			//alert("scroll");
 			
 		} else {
 			console.log("no scroll" + h + v);
@@ -837,33 +855,7 @@ var Reveal = (function(){
 		// Activate and transition to the new slide
 		indexh = updateSlides( HORIZONTAL_SLIDES_SELECTOR, h === undefined ? indexh : h );
 		indexv = updateSlides( VERTICAL_SLIDES_SELECTOR, v === undefined ? indexv : v );
-
-		console.log("laod: " + indexh + indexv);
-
-		//console.log(pages);
-		if(indexh === 0 && indexv === 1) {
-			 $("#overview > section:last-child").load(pages[0], function() {
-			 	layout();
-			 });
-		} else {
-			 $("#overview > section:last-child").children().remove();
-		}
 		
-		/* for(var i = 1; i<pages.length;i++) {
-		 	 if(event.indexh === i) {
-		 	 	var scopedIndex = i;
-		 	 	 $("#" + scopedIndex).load(pages[scopedIndex], function() {
-		 	 	 	//console.log("loaded #"+scopedIndex + " > section");
-		 	 	 	 $("#"+scopedIndex + " > section").addClass("present");
-		 	 	 });
-			 	
-			 } else {
-			 	 $("#"+i).load(pages[i]);
-			 	 
-			 }
-		 	
-			
-		 }*/
 		layout();
 
 		// Apply the new state
@@ -929,10 +921,94 @@ var Reveal = (function(){
 	
 		updateControls();
 		updateProgress();
+	
+	}
+	
+	/**
+	 * namics/samschmid
+	 * 
+	 * Schiebe die Slide von unten nach oben über die aktuelle view
+	 * der Link muss wie folgt gesetzt sein:
+	 * #/overflow/LINK
+	 */
+	function overlay( h, v ) {
 		
-		
+		console.log("Overlay"+h+v);
+
+
+		// Activate and transition to the new slide
+		indexh = updateOverlaySlides( HORIZONTAL_SLIDES_SELECTOR, h === undefined ? indexh : h );
+		indexv = updateOverlaySlides( VERTICAL_SLIDES_SELECTOR, v === undefined ? indexv : v );
+
+
 	}
 
+	/**
+	 * namics/samschmid
+	 * Die Css Klassen des slides, welches über das aktuelle slide gelegt werden soll, wird angepasst
+	 */
+	function updateOverlaySlides( selector, index ) {
+		// Select all slides and convert the NodeList result to
+		// an array
+		var slides = toArray( document.querySelectorAll( selector ) ),
+			slidesLength = slides.length;
+
+		if( slidesLength ) {
+
+			// Should the index loop?
+			if( config.loop ) {
+				index %= slidesLength;
+
+				if( index < 0 ) {
+					index = slidesLength + index;
+				}
+			}
+
+			// Enforce max and minimum index bounds
+			index = Math.max( Math.min( index, slidesLength - 1 ), 0 );
+			var top = 0;
+			for( var i = 0; i < slidesLength; i++ ) {
+				var element = slides[i];
+
+				// Optimization; hide all slides that are three or more steps
+				// away from the present slide
+				
+				if( isOverviewActive() === false ) {
+					// The distance loops so that it measures 1 between the first
+					// and last slides
+					//var distance = Math.abs( ( index - i ) % ( slidesLength - 10 ) ) || 0;
+
+					element.style.display =  'block';
+				}
+				slides[i].classList.remove( 'overlay' );
+				
+				// If this element contains vertical slides
+				if( element.querySelector( 'section' ) ) {
+					//console.log(slides[i]);
+					slides[i].classList.add( 'stack' );
+					
+				}
+
+				var minTop = -dom.wrapper.offsetHeight / 2;
+				 top = minTop + 'px';
+			
+			}
+
+			// Mark the current slide as present
+			slides[index].classList.add( 'overlay' );
+			slides[index].classList.add( 'slideup' );
+			$('.reveal .slides>section.overlay').css("top",top );
+		}
+		else {
+			// Since there are no slides we can't be anywhere beyond the
+			// zeroth index
+			index = 0;
+		}
+
+		
+		return index;
+
+	}
 	/**
 	 * Updates one dimension of slides by showing the slide
 	 * with the specified index.
@@ -982,7 +1058,8 @@ var Reveal = (function(){
 				slides[i].classList.remove( 'past' );
 				slides[i].classList.remove( 'present' );
 				slides[i].classList.remove( 'future' );
-
+				slides[i].classList.remove( 'overlay' );
+				slides[i].classList.remove( 'slideup' );
 				if( i < index ) {
 					// Any element previous to index is given the 'past' class
 					slides[i].classList.add( 'past' );
@@ -1071,8 +1148,11 @@ var Reveal = (function(){
 				}
 
 			}
-
-			dom.progressbar.style.width = ( pastCount / ( totalCount - 1 ) ) * window.innerWidth + 'px';
+			
+			console.log("past" + pastCount)
+			$("span").removeClass( 'activeIndex' );
+			$("#index"+pastCount).addClass( 'activeIndex' );
+			//dom.progressbar.style.width = ( pastCount / ( totalCount - 1 ) ) * window.innerWidth + 'px';
 
 		}
 	}
@@ -1136,12 +1216,23 @@ var Reveal = (function(){
 			urlrewrite = false;
 			return;
 		}
+		setTimeout(function() {
+					$('.reveal').scrollTop(0);
+					console.log("ScrollTOP");
+			},1)
+		
 		var hash = window.location.hash;
 		
 		console.log("READ URL");
 		if(hash.indexOf("rwd-router")!==-1) {
 			return;
 		}
+		var overflow = false;
+		if(hash.indexOf("overflow")!==-1) {
+			overflow = true;
+			hash=hash.replace('overflow/','');
+
+		} 
 		// Attempt to parse the hash as either an index or name
 		var bits = hash.slice( 2 ).split( '/' ),
 			name = hash.replace( /#|\//gi, '' );
@@ -1155,19 +1246,32 @@ var Reveal = (function(){
 			if( element ) {
 				// Find the position of the named slide and navigate to it
 				var indices = Reveal.getIndices( element );
-				slide( indices.h, indices.v );
+				if(!overflow) {
+					slide( indices.h, indices.v );
+				} else {
+					overlay(indices.h, indices.v);
+				}
+				
 			}
 			// If the slide doesn't exist, navigate to the current slide
 			else {
-				slide( indexh, indexv );
+				if(!overflow) {
+					slide( indexh, indexv );
+				} else {
+					overlay(indexh, indexv);
+				}
 			}
 		}
 		else {
 			// Read the index components of the hash
 			var h = parseInt( bits[0], 10 ) || 0,
 				v = parseInt( bits[1], 10 ) || 0;
-
-			slide( h, v );
+			if(!overflow) {
+				slide( h, v );
+			} else {
+					overlay(h, v);
+			}
+			
 			
 		}
 	
@@ -1318,18 +1422,14 @@ var Reveal = (function(){
 	function navigateLeft() {
 		// Prioritize hiding fragments
 		if( availableRoutes().left && isOverviewActive() || previousFragment() === false ) {
-			//if(config.state !== "overview" && config.state !== 'isolate') {
-				slide( indexh - 1 );
-			//}
+			slide( indexh - 1 );
 		}
 	}
 
 	function navigateRight() {
 		// Prioritize revealing fragments
 		if( availableRoutes().right && isOverviewActive() || nextFragment() === false ) {
-			//if(config.state !== "overview" && config.state !== 'isolate') {
-				slide( indexh + 1 );
-			//}
+			slide( indexh + 1 );
 		}
 	
 	}
@@ -1337,9 +1437,7 @@ var Reveal = (function(){
 	function navigateUp() {
 		// Prioritize hiding fragments
 		if( availableRoutes().up && isOverviewActive() || previousFragment() === false ) {
-		//	if(config.state !== "overview" && config.state !== 'isolate') {
-				slide( indexh, indexv - 1 );
-			//}
+			slide( indexh, indexv - 1 );
 		}
 		
 	}
@@ -1347,9 +1445,7 @@ var Reveal = (function(){
 	function navigateDown() {
 		// Prioritize revealing fragments
 		if( availableRoutes().down && isOverviewActive() || nextFragment() === false ) {
-		//	if(config.state !== "overview" && config.state !== 'isolate') {
-				slide( indexh, indexv + 1 );
-		//	}
+			slide( indexh, indexv + 1 );
 		}
 	}
 
@@ -1587,10 +1683,10 @@ var Reveal = (function(){
 	 * ( clickX / presentationWidth ) * numberOfSlides
 	 */
 	function onProgressClick( event ) {
-		var slidesTotal = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).length;
-		var slideIndex = Math.floor( ( event.clientX / dom.wrapper.offsetWidth ) * slidesTotal );
+		//var slidesTotal = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) ).length;
+		//var slideIndex = Math.floor( ( event.clientX / dom.wrapper.offsetWidth ) * slidesTotal );
 
-		slide( slideIndex );
+		//slide( slideIndex );
 	}
 
 	/**
@@ -1625,14 +1721,7 @@ var Reveal = (function(){
 		}
 	}
 	
-	/**
-	 * setState
-	 */
-	function setState(newstate) {
-		console.log(newstate);
-		config.state = newstate;
-		
-	}
+	
 	/**
 	 * hide MenuButton
 	 */
@@ -1686,7 +1775,6 @@ var Reveal = (function(){
 		initialize: initialize,
 
 		// New Methods
-		setState: setState,
 		hideMenuButton: hideMenuButton,
 		showMenuButton: showMenuButton,
 		hideCloseButton: hideCloseButton,

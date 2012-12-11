@@ -453,14 +453,15 @@ body {
 .reveal .progress {
   position: fixed;
   display: none;
-  height: 3px;
+  height: 30px;
   width: 100%;
   bottom: 0;
   left: 0;
   z-index: 10;
+  text-align: center;
 }
 
-/* line 15, reveal/_progressbar.scss */
+/* line 16, reveal/_progressbar.scss */
 .reveal .progress:after {
   content: '';
   display: 'block';
@@ -470,16 +471,33 @@ body {
   top: -20px;
 }
 
-/* line 23, reveal/_progressbar.scss */
+/* line 24, reveal/_progressbar.scss */
 .reveal .progress span {
-  display: block;
+  display: inline-block;
   height: 100%;
-  width: 0px;
+  color: red;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/* line 35, reveal/_progressbar.scss */
+.reveal .progress span:first-child {
+  position: fixed;
+  left: 10px;
+}
+
+/* line 39, reveal/_progressbar.scss */
+.reveal .progress span:last-child {
+  position: fixed;
+  right: 10px;
+}
+
+/* line 44, reveal/_progressbar.scss */
+.activeIndex {
+  color: yellow !important;
 }
 
 /*********************************************
@@ -619,12 +637,22 @@ body {
 }
 
 /* line 83, reveal/_slides.scss */
+.reveal .slides > section.overlay,
+.reveal .slides > section > section.overlay {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+/* line 94, reveal/_slides.scss */
 .reveal .slides > section {
   left: -50%;
   top: -50%;
 }
 
-/* line 89, reveal/_slides.scss */
+/* line 100, reveal/_slides.scss */
 .reveal .slides > section.present,
 .reveal .slides > section > section.present {
   display: block;
@@ -632,7 +660,21 @@ body {
   opacity: 1;
 }
 
-/* line 96, reveal/_slides.scss */
+/* line 106, reveal/_slides.scss */
+.reveal .slides > section.overlay,
+.reveal .slides > section > section.overlay {
+  display: block;
+  z-index: 12;
+  opacity: 1;
+  top: 0px;
+}
+/* line 113, reveal/_slides.scss */
+.reveal .slides > section.overlay > section,
+.reveal .slides > section > section.overlay > section {
+  display: block !important;
+}
+
+/* line 118, reveal/_slides.scss */
 .reveal.center,
 .reveal.center .slides {
   min-height: auto;
@@ -661,7 +703,73 @@ body {
   transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
 }
 
-/* line 25, reveal/_transitions.scss */
+/* line 24, reveal/_transitions.scss */
+.reveal .slides > section.overlay {
+  display: block;
+  opacity: 0;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+
+/* line 34, reveal/_transitions.scss */
+.reveal .slides > section.slideup {
+  animation: slideup 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -webkit-animation: slideup 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-animation: slideup 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-animation: slideup 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+@keyframes slideup {
+  /* line 43, reveal/_transitions.scss */
+  from {
+    margin-top: 2600px;
+  }
+
+  /* line 48, reveal/_transitions.scss */
+  to {
+    margin-top: 20px;
+  }
+}
+
+@-webkit-keyframes slideup {
+  /* line 54, reveal/_transitions.scss */
+  from {
+    margin-top: 2600px;
+  }
+
+  /* line 59, reveal/_transitions.scss */
+  to {
+    margin-top: 20px;
+  }
+}
+
+@-moz-keyframes slideup {
+  /* line 67, reveal/_transitions.scss */
+  from {
+    margin-top: 2600px;
+  }
+
+  /* line 72, reveal/_transitions.scss */
+  to {
+    margin-top: 20px;
+  }
+}
+
+@-o-keyframes slideup {
+  /* line 82, reveal/_transitions.scss */
+  from {
+    margin-top: 2600px;
+  }
+
+  /* line 87, reveal/_transitions.scss */
+  to {
+    margin-top: 20px;
+  }
+}
+
+/* line 92, reveal/_transitions.scss */
 .reveal .slides > section > section.past {
   display: block;
   opacity: 0;
@@ -671,7 +779,7 @@ body {
   transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);
 }
 
-/* line 34, reveal/_transitions.scss */
+/* line 101, reveal/_transitions.scss */
 .reveal .slides > section > section.future {
   display: block;
   opacity: 0;
@@ -684,7 +792,7 @@ body {
 /*********************************************
  * CONCAVE TRANSITION
  *********************************************/
-/* line 49, reveal/_transitions.scss */
+/* line 116, reveal/_transitions.scss */
 .reveal.concave .slides > section.past {
   -webkit-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
   -moz-transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
@@ -692,7 +800,7 @@ body {
   transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
 }
 
-/* line 55, reveal/_transitions.scss */
+/* line 122, reveal/_transitions.scss */
 .reveal.concave .slides > section.future {
   -webkit-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
   -moz-transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
@@ -700,7 +808,7 @@ body {
   transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
 }
 
-/* line 62, reveal/_transitions.scss */
+/* line 129, reveal/_transitions.scss */
 .reveal.concave .slides > section > section.past {
   -webkit-transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
   -moz-transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
@@ -708,7 +816,7 @@ body {
   transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
 }
 
-/* line 68, reveal/_transitions.scss */
+/* line 135, reveal/_transitions.scss */
 .reveal.concave .slides > section > section.future {
   -webkit-transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);
   -moz-transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);
@@ -719,7 +827,7 @@ body {
 /*********************************************
  * ZOOM TRANSITION
  *********************************************/
-/* line 80, reveal/_transitions.scss */
+/* line 147, reveal/_transitions.scss */
 .reveal.zoom .slides > section.past {
   opacity: 0;
   visibility: hidden;
@@ -730,7 +838,7 @@ body {
   transform: scale(16);
 }
 
-/* line 90, reveal/_transitions.scss */
+/* line 157, reveal/_transitions.scss */
 .reveal.zoom .slides > section.future {
   opacity: 0;
   visibility: hidden;
@@ -741,7 +849,7 @@ body {
   transform: scale(0.2);
 }
 
-/* line 101, reveal/_transitions.scss */
+/* line 168, reveal/_transitions.scss */
 .reveal.zoom .slides > section > section.past {
   -webkit-transform: translate(0, -150%);
   -moz-transform: translate(0, -150%);
@@ -750,7 +858,7 @@ body {
   transform: translate(0, -150%);
 }
 
-/* line 108, reveal/_transitions.scss */
+/* line 175, reveal/_transitions.scss */
 .reveal.zoom .slides > section > section.future {
   -webkit-transform: translate(0, 150%);
   -moz-transform: translate(0, 150%);
@@ -762,7 +870,7 @@ body {
 /*********************************************
  * LINEAR TRANSITION
  *********************************************/
-/* line 121, reveal/_transitions.scss */
+/* line 188, reveal/_transitions.scss */
 .reveal.linear .slides > section.past {
   -webkit-transform: translate(-150%, 0);
   -moz-transform: translate(-150%, 0);
@@ -771,7 +879,7 @@ body {
   transform: translate(-150%, 0);
 }
 
-/* line 128, reveal/_transitions.scss */
+/* line 195, reveal/_transitions.scss */
 .reveal.linear .slides > section.future {
   -webkit-transform: translate(150%, 0);
   -moz-transform: translate(150%, 0);
@@ -780,7 +888,7 @@ body {
   transform: translate(150%, 0);
 }
 
-/* line 136, reveal/_transitions.scss */
+/* line 203, reveal/_transitions.scss */
 .reveal.linear .slides > section > section.past {
   -webkit-transform: translate(0, -150%);
   -moz-transform: translate(0, -150%);
@@ -789,7 +897,7 @@ body {
   transform: translate(0, -150%);
 }
 
-/* line 143, reveal/_transitions.scss */
+/* line 210, reveal/_transitions.scss */
 .reveal.linear .slides > section > section.future {
   -webkit-transform: translate(0, 150%);
   -moz-transform: translate(0, 150%);
@@ -801,7 +909,7 @@ body {
 /*********************************************
  * CUBE TRANSITION
  *********************************************/
-/* line 156, reveal/_transitions.scss */
+/* line 223, reveal/_transitions.scss */
 .reveal.cube .slides {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
@@ -809,7 +917,7 @@ body {
   perspective: 1300px;
 }
 
-/* line 163, reveal/_transitions.scss */
+/* line 230, reveal/_transitions.scss */
 .reveal.cube .slides section {
   padding: 30px;
   min-height: 600px;
@@ -822,12 +930,12 @@ body {
   box-sizing: border-box;
 }
 
-/* line 176, reveal/_transitions.scss */
+/* line 243, reveal/_transitions.scss */
 .reveal.center.cube .slides section {
   min-height: auto;
 }
 
-/* line 179, reveal/_transitions.scss */
+/* line 246, reveal/_transitions.scss */
 .reveal.cube .slides section:not(.stack):before {
   content: '';
   position: absolute;
@@ -845,7 +953,7 @@ body {
   transform: translateZ(-20px);
 }
 
-/* line 196, reveal/_transitions.scss */
+/* line 263, reveal/_transitions.scss */
 .reveal.cube .slides section:not(.stack):after {
   content: '';
   position: absolute;
@@ -865,13 +973,13 @@ body {
   transform: translateZ(-90px) rotateX(65deg);
 }
 
-/* line 217, reveal/_transitions.scss */
+/* line 284, reveal/_transitions.scss */
 .reveal.cube .slides > section.stack {
   padding: 0;
   background: none;
 }
 
-/* line 222, reveal/_transitions.scss */
+/* line 289, reveal/_transitions.scss */
 .reveal.cube .slides > section.past {
   -webkit-transform-origin: 100% 0%;
   -moz-transform-origin: 100% 0%;
@@ -883,7 +991,7 @@ body {
   transform: translate3d(-100%, 0, 0) rotateY(-90deg);
 }
 
-/* line 234, reveal/_transitions.scss */
+/* line 301, reveal/_transitions.scss */
 .reveal.cube .slides > section.future {
   -webkit-transform-origin: 0% 0%;
   -moz-transform-origin: 0% 0%;
@@ -895,7 +1003,7 @@ body {
   transform: translate3d(100%, 0, 0) rotateY(90deg);
 }
 
-/* line 246, reveal/_transitions.scss */
+/* line 313, reveal/_transitions.scss */
 .reveal.cube .slides > section > section.past {
   -webkit-transform-origin: 0% 100%;
   -moz-transform-origin: 0% 100%;
@@ -907,7 +1015,7 @@ body {
   transform: translate3d(0, -100%, 0) rotateX(90deg);
 }
 
-/* line 258, reveal/_transitions.scss */
+/* line 325, reveal/_transitions.scss */
 .reveal.cube .slides > section > section.future {
   -webkit-transform-origin: 0% 0%;
   -moz-transform-origin: 0% 0%;
@@ -922,7 +1030,7 @@ body {
 /*********************************************
  * PAGE TRANSITION
  *********************************************/
-/* line 275, reveal/_transitions.scss */
+/* line 342, reveal/_transitions.scss */
 .reveal.page .slides {
   -webkit-perspective-origin: 0% 50%;
   -moz-perspective-origin: 0% 50%;
@@ -934,7 +1042,7 @@ body {
   perspective: 3000px;
 }
 
-/* line 287, reveal/_transitions.scss */
+/* line 354, reveal/_transitions.scss */
 .reveal.page .slides section {
   padding: 30px;
   -webkit-box-sizing: border-box;
@@ -942,12 +1050,12 @@ body {
   box-sizing: border-box;
 }
 
-/* line 294, reveal/_transitions.scss */
+/* line 361, reveal/_transitions.scss */
 .reveal.page .slides section.past {
   z-index: 12;
 }
 
-/* line 297, reveal/_transitions.scss */
+/* line 364, reveal/_transitions.scss */
 .reveal.page .slides section:not(.stack):before {
   content: '';
   position: absolute;
@@ -964,7 +1072,7 @@ body {
   transform: translateZ(-20px);
 }
 
-/* line 313, reveal/_transitions.scss */
+/* line 380, reveal/_transitions.scss */
 .reveal.page .slides section:not(.stack):after {
   content: '';
   position: absolute;
@@ -980,13 +1088,13 @@ body {
   -webkit-transform: translateZ(-90px) rotateX(65deg);
 }
 
-/* line 330, reveal/_transitions.scss */
+/* line 397, reveal/_transitions.scss */
 .reveal.page .slides > section.stack {
   padding: 0;
   background: none;
 }
 
-/* line 335, reveal/_transitions.scss */
+/* line 402, reveal/_transitions.scss */
 .reveal.page .slides > section.past {
   -webkit-transform-origin: 0% 0%;
   -moz-transform-origin: 0% 0%;
@@ -998,7 +1106,7 @@ body {
   transform: translate3d(-40%, 0, 0) rotateY(-80deg);
 }
 
-/* line 347, reveal/_transitions.scss */
+/* line 414, reveal/_transitions.scss */
 .reveal.page .slides > section.future {
   -webkit-transform-origin: 100% 0%;
   -moz-transform-origin: 100% 0%;
@@ -1010,7 +1118,7 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-/* line 359, reveal/_transitions.scss */
+/* line 426, reveal/_transitions.scss */
 .reveal.page .slides > section > section.past {
   -webkit-transform-origin: 0% 0%;
   -moz-transform-origin: 0% 0%;
@@ -1022,7 +1130,7 @@ body {
   transform: translate3d(0, -40%, 0) rotateX(80deg);
 }
 
-/* line 371, reveal/_transitions.scss */
+/* line 438, reveal/_transitions.scss */
 .reveal.page .slides > section > section.future {
   -webkit-transform-origin: 0% 100%;
   -moz-transform-origin: 0% 100%;
@@ -1037,7 +1145,7 @@ body {
 /*********************************************
  * NO TRANSITION
  *********************************************/
-/* line 389, reveal/_transitions.scss */
+/* line 456, reveal/_transitions.scss */
 .reveal.none .slides section {
   -webkit-transform: none;
   -moz-transform: none;
@@ -1273,98 +1381,6 @@ body {
 }
 
 /*********************************************
- * GRID 
- *********************************************/
-/* line 6, reveal/_grid.scss */
-.row {
-  width: 100%;
-  max-width: 280px;
-  min-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-/* line 14, reveal/_grid.scss */
-.col {
-  float: left;
-  min-height: 1px;
-  width: 50%;
-}
-
-/* line 19, reveal/_grid.scss */
-.col:not(img) {
-  height: 160px;
-}
-
-/* line 22, reveal/_grid.scss */
-img.col {
-  height: auto;
-}
-
-/* line 25, reveal/_grid.scss */
-li {
-  float: left;
-  min-height: 1px;
-  width: 280px;
-}
-
-/* line 31, reveal/_grid.scss */
-.reveal li {
-  float: left;
-  min-height: 1px;
-  width: 280px;
-  max-width: 280px;
-  padding: 0 0 35px 0;
-  overflow: hidden;
-  font-size: 2em;
-  line-height: 1em;
-  min-height: 15px;
-  background-image: url("../lib/img/nav.png");
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  background-position-x: 30px;
-  padding-top: 20px;
-}
-/* line 49, reveal/_grid.scss */
-.reveal li a {
-  display: block;
-  padding: 0 30px 0 30px;
-}
-
-/* line 55, reveal/_grid.scss */
-ul.subnav {
-  width: 100%;
-  height: 160px;
-  padding: 0;
-}
-
-/* line 60, reveal/_grid.scss */
-.subnav li {
-  width: 50%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
-/* line 66, reveal/_grid.scss */
-.subnav li > a, .subnav li > a:link, .subnav li > a:active, .subnav li > a:hover, .subnav li > a:visited {
-  display: block;
-  padding: 40px 30px 0 30px;
-  color: white;
-}
-
-/* line 73, reveal/_grid.scss */
-.subnav li:first-child {
-  background-color: #b432a6;
-  background-image: none;
-}
-
-/* line 78, reveal/_grid.scss */
-.subnav li:last-child {
-  background-color: #432752;
-  background-image: none;
-}
-
-/*********************************************
  * Custom 
  *********************************************/
 /* line 6, reveal/_custom.scss */
@@ -1395,398 +1411,454 @@ ul.subnav {
   max-height: 400px;
 }
 
+/* line 53, reveal/reveal.scss */
+.reveal .slides > section.overlay > section {
+  background-color: gray !important;
+  padding: 5% 5%;
+  width: 90%;
+}
+
+/* line 59, reveal/reveal.scss */
+body {
+  min-width: 480px;
+  max-width: 719px;
+  width: 100%;
+}
+
+/* line 64, reveal/reveal.scss */
+.reveal .slides {
+  font-size: 0.52em;
+}
+
+/*********************************************
+ * DEFAULT ELEMENT STYLES
+ *********************************************/
+/* Fixes issue in Chrome where italic fonts did not appear when printing to PDF */
+/* line 7, reveal/_defaults.scss */
+.reveal:after {
+  content: '';
+  font-style: italic;
+}
+
+/* Preserve aspect ratio and scale image so it's bound within the section */
+/* line 14, reveal/_defaults.scss */
+.reveal img,
+.reveal iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* line 20, reveal/_defaults.scss */
+.reveal strong,
+.reveal b {
+  font-weight: bold;
+}
+
+/* line 25, reveal/_defaults.scss */
+.reveal em,
+.reveal i {
+  font-style: italic;
+}
+
+/* line 30, reveal/_defaults.scss */
+.reveal ol,
+.reveal ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 0 0;
+}
+
+/* line 37, reveal/_defaults.scss */
+.reveal ol {
+  list-style-type: decimal;
+}
+
+/* line 41, reveal/_defaults.scss */
+.reveal ul {
+  list-style-type: disc;
+}
+
+/* line 45, reveal/_defaults.scss */
+.reveal ul ul {
+  list-style-type: square;
+}
+
+/* line 49, reveal/_defaults.scss */
+.reveal ul ul ul {
+  list-style-type: circle;
+}
+
+/* line 56, reveal/_defaults.scss */
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+  display: block;
+  margin-left: 40px;
+}
+
+/* line 61, reveal/_defaults.scss */
+.reveal p {
+  margin-bottom: 10px;
+  line-height: 1.2em;
+}
+
+/* line 67, reveal/_defaults.scss */
+.reveal q,
+.reveal blockquote {
+  quotes: none;
+}
+
+/* line 71, reveal/_defaults.scss */
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 5px auto;
+  padding: 5px;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* line 83, reveal/_defaults.scss */
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: inline-block;
+}
+
+/* line 86, reveal/_defaults.scss */
+.reveal blockquote:before {
+  content: '\201C';
+}
+
+/* line 89, reveal/_defaults.scss */
+.reveal blockquote:after {
+  content: '\201D';
+}
+
+/* line 93, reveal/_defaults.scss */
+.reveal q {
+  font-style: italic;
+}
+
+/* line 96, reveal/_defaults.scss */
+.reveal q:before {
+  content: '\201C';
+}
+
+/* line 99, reveal/_defaults.scss */
+.reveal q:after {
+  content: '\201D';
+}
+
+/* line 103, reveal/_defaults.scss */
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 15px auto;
+  text-align: left;
+  font-size: 0.55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* line 118, reveal/_defaults.scss */
+.reveal pre code {
+  padding: 5px;
+}
+
+/* line 122, reveal/_defaults.scss */
+.reveal code {
+  font-family: monospace;
+  overflow: auto;
+  max-height: 400px;
+}
+
+/* line 129, reveal/_defaults.scss */
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding-right: .3em;
+}
+
+/* line 134, reveal/_defaults.scss */
+.reveal table th {
+  text-shadow: white 1px 1px 2px;
+}
+
+/* line 138, reveal/_defaults.scss */
+.reveal sup {
+  vertical-align: super;
+}
+
+/* line 141, reveal/_defaults.scss */
+.reveal sub {
+  vertical-align: sub;
+}
+
+/* line 145, reveal/_defaults.scss */
+.reveal small {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1.2em;
+  vertical-align: top;
+}
+
+/* line 152, reveal/_defaults.scss */
+.reveal small * {
+  vertical-align: top;
+}
+
+/*********************************************
+ * SLIDES
+ *********************************************/
+/* line 6, reveal/_slides.scss */
+.reveal {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 640px;
+  /* min height + 40 to account for padding */
+}
+
+/* line 15, reveal/_slides.scss */
+.reveal .slides {
+  position: absolute;
+  max-width: 719px;
+  min-height: 320px;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  overflow: visible;
+  z-index: 1;
+  text-align: left;
+  -webkit-transition: -webkit-perspective .4s ease;
+  -moz-transition: -moz-perspective .4s ease;
+  -ms-transition: -ms-perspective .4s ease;
+  -o-transition: -o-perspective .4s ease;
+  transition: perspective .4s ease;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  -ms-perspective: 600px;
+  perspective: 600px;
+  -webkit-perspective-origin: 0px -100px;
+  -moz-perspective-origin: 0px -100px;
+  -ms-perspective-origin: 0px -100px;
+  perspective-origin: 0px -100px;
+}
+
+/* line 46, reveal/_slides.scss */
+.reveal .slides > section,
+.reveal .slides > section > section {
+  display: none;
+  position: absolute;
+  width: 100%;
+  padding: 0 0;
+  z-index: 10;
+  line-height: 1.2em;
+  font-weight: normal;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -webkit-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: -moz-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -moz-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: -ms-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -ms-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: -o-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -o-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/* line 83, reveal/_slides.scss */
+.reveal .slides > section.overlay,
+.reveal .slides > section > section.overlay {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+/* line 94, reveal/_slides.scss */
+.reveal .slides > section {
+  left: -50%;
+  top: -50%;
+}
+
+/* line 100, reveal/_slides.scss */
+.reveal .slides > section.present,
+.reveal .slides > section > section.present {
+  display: block;
+  z-index: 11;
+  opacity: 1;
+}
+
+/* line 106, reveal/_slides.scss */
+.reveal .slides > section.overlay,
+.reveal .slides > section > section.overlay {
+  display: block;
+  z-index: 12;
+  opacity: 1;
+  top: 0px;
+}
+/* line 113, reveal/_slides.scss */
+.reveal .slides > section.overlay > section,
+.reveal .slides > section > section.overlay > section {
+  display: block !important;
+}
+
+/* line 118, reveal/_slides.scss */
+.reveal.center,
+.reveal.center .slides {
+  min-height: auto;
+}
+
+/* line 89, reveal/reveal.scss */
+.reveal li {
+  height: 110px;
+  word-wrap: break-word;
+}
+/* line 92, reveal/reveal.scss */
+.reveal li:nth-child(9n) {
+  height: 110px;
+  width: 100%;
+}
+/* line 96, reveal/reveal.scss */
+.reveal li:nth-child(n+7) {
+  display: none;
+}
+/* line 99, reveal/reveal.scss */
+.reveal li.more {
+  display: block;
+  width: 100%;
+  height: 50%;
+}
+
+/*********************************************
+ * GRID 
+ *********************************************/
+/* line 6, reveal/_grid.scss */
+.row {
+  width: 100%;
+  max-width: 719px;
+  min-width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* line 14, reveal/_grid.scss */
+.col {
+  float: left;
+  min-height: 1px;
+  width: 50%;
+}
+
+/* line 19, reveal/_grid.scss */
+.col:not(img) {
+  height: 160px;
+}
+
+/* line 22, reveal/_grid.scss */
+img.col {
+  height: auto;
+}
+
+/* line 25, reveal/_grid.scss */
+li {
+  float: left;
+  min-height: 1px;
+  width: 50%;
+}
+
+/* line 31, reveal/_grid.scss */
+.reveal li {
+  float: left;
+  min-height: 1px;
+  width: 50%;
+  max-width: 719px;
+  padding: 0 0 35px 0;
+  overflow: hidden;
+  font-size: 2em;
+  min-height: 15px;
+  background-image: url("../lib/img/nav.png");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-position-x: 30px;
+  padding-top: 20px;
+}
+/* line 49, reveal/_grid.scss */
+.reveal li a {
+  display: block;
+  padding: 0 30px 0 30px;
+  line-height: 1em;
+}
+
+/* line 56, reveal/_grid.scss */
+ul.subnav {
+  width: 100%;
+  height: 160px;
+  padding: 0;
+}
+
+/* line 61, reveal/_grid.scss */
+.subnav li {
+  width: 50%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+/* line 67, reveal/_grid.scss */
+.subnav li > a, .subnav li > a:link, .subnav li > a:active, .subnav li > a:hover, .subnav li > a:visited {
+  display: block;
+  padding: 40px 30px 0 30px;
+  color: white;
+}
+
+/* line 74, reveal/_grid.scss */
+.subnav li:first-child {
+  background-color: #b432a6;
+  background-image: none;
+}
+
+/* line 79, reveal/_grid.scss */
+.subnav li:last-child {
+  background-color: #432752;
+  background-image: none;
+}
+
+/* line 84, reveal/_grid.scss */
+#kontakt li {
+  padding: 0;
+  height: auto;
+  background-color: transparent;
+}
+/* line 88, reveal/_grid.scss */
+#kontakt li img {
+  width: 100%;
+  height: auto;
+}
+/* line 92, reveal/_grid.scss */
+#kontakt li a {
+  margin-top: 15px;
+}
+
 /*********************************************
  * MEDIA Queryies
  *********************************************/
-@media only screen and (min-width: 480px) {
-  /* line 58, reveal/reveal.scss */
-  body {
-    min-width: 480px;
-    max-width: 719px;
-    width: 100%;
-  }
-
-  /* line 63, reveal/reveal.scss */
-  .reveal .slides {
-    font-size: 0.52em;
-  }
-
-  /*********************************************
-   * DEFAULT ELEMENT STYLES
-   *********************************************/
-  /* Fixes issue in Chrome where italic fonts did not appear when printing to PDF */
-  /* line 7, reveal/_defaults.scss */
-  .reveal:after {
-    content: '';
-    font-style: italic;
-  }
-
-  /* Preserve aspect ratio and scale image so it's bound within the section */
-  /* line 14, reveal/_defaults.scss */
-  .reveal img,
-  .reveal iframe {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  /* line 20, reveal/_defaults.scss */
-  .reveal strong,
-  .reveal b {
-    font-weight: bold;
-  }
-
-  /* line 25, reveal/_defaults.scss */
-  .reveal em,
-  .reveal i {
-    font-style: italic;
-  }
-
-  /* line 30, reveal/_defaults.scss */
-  .reveal ol,
-  .reveal ul {
-    display: inline-block;
-    text-align: left;
-    margin: 0 0 0 0;
-  }
-
-  /* line 37, reveal/_defaults.scss */
-  .reveal ol {
-    list-style-type: decimal;
-  }
-
-  /* line 41, reveal/_defaults.scss */
-  .reveal ul {
-    list-style-type: disc;
-  }
-
-  /* line 45, reveal/_defaults.scss */
-  .reveal ul ul {
-    list-style-type: square;
-  }
-
-  /* line 49, reveal/_defaults.scss */
-  .reveal ul ul ul {
-    list-style-type: circle;
-  }
-
-  /* line 56, reveal/_defaults.scss */
-  .reveal ul ul,
-  .reveal ul ol,
-  .reveal ol ol,
-  .reveal ol ul {
-    display: block;
-    margin-left: 40px;
-  }
-
-  /* line 61, reveal/_defaults.scss */
-  .reveal p {
-    margin-bottom: 10px;
-    line-height: 1.2em;
-  }
-
-  /* line 67, reveal/_defaults.scss */
-  .reveal q,
-  .reveal blockquote {
-    quotes: none;
-  }
-
-  /* line 71, reveal/_defaults.scss */
-  .reveal blockquote {
-    display: block;
-    position: relative;
-    width: 70%;
-    margin: 5px auto;
-    padding: 5px;
-    font-style: italic;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  /* line 83, reveal/_defaults.scss */
-  .reveal blockquote p:first-child,
-  .reveal blockquote p:last-child {
-    display: inline-block;
-  }
-
-  /* line 86, reveal/_defaults.scss */
-  .reveal blockquote:before {
-    content: '\201C';
-  }
-
-  /* line 89, reveal/_defaults.scss */
-  .reveal blockquote:after {
-    content: '\201D';
-  }
-
-  /* line 93, reveal/_defaults.scss */
-  .reveal q {
-    font-style: italic;
-  }
-
-  /* line 96, reveal/_defaults.scss */
-  .reveal q:before {
-    content: '\201C';
-  }
-
-  /* line 99, reveal/_defaults.scss */
-  .reveal q:after {
-    content: '\201D';
-  }
-
-  /* line 103, reveal/_defaults.scss */
-  .reveal pre {
-    display: block;
-    position: relative;
-    width: 90%;
-    margin: 15px auto;
-    text-align: left;
-    font-size: 0.55em;
-    font-family: monospace;
-    line-height: 1.2em;
-    word-wrap: break-word;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  /* line 118, reveal/_defaults.scss */
-  .reveal pre code {
-    padding: 5px;
-  }
-
-  /* line 122, reveal/_defaults.scss */
-  .reveal code {
-    font-family: monospace;
-    overflow: auto;
-    max-height: 400px;
-  }
-
-  /* line 129, reveal/_defaults.scss */
-  .reveal table th,
-  .reveal table td {
-    text-align: left;
-    padding-right: .3em;
-  }
-
-  /* line 134, reveal/_defaults.scss */
-  .reveal table th {
-    text-shadow: white 1px 1px 2px;
-  }
-
-  /* line 138, reveal/_defaults.scss */
-  .reveal sup {
-    vertical-align: super;
-  }
-
-  /* line 141, reveal/_defaults.scss */
-  .reveal sub {
-    vertical-align: sub;
-  }
-
-  /* line 145, reveal/_defaults.scss */
-  .reveal small {
-    display: inline-block;
-    font-size: 0.6em;
-    line-height: 1.2em;
-    vertical-align: top;
-  }
-
-  /* line 152, reveal/_defaults.scss */
-  .reveal small * {
-    vertical-align: top;
-  }
-
-  /*********************************************
-   * SLIDES
-   *********************************************/
-  /* line 6, reveal/_slides.scss */
-  .reveal {
-    overflow-y: scroll !important;
-    overflow-x: hidden !important;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 640px;
-    /* min height + 40 to account for padding */
-  }
-
-  /* line 15, reveal/_slides.scss */
-  .reveal .slides {
-    position: absolute;
-    max-width: 719px;
-    min-height: 420px;
-    width: 100%;
-    left: 50%;
-    top: 50%;
-    overflow: visible;
-    z-index: 1;
-    text-align: left;
-    -webkit-transition: -webkit-perspective .4s ease;
-    -moz-transition: -moz-perspective .4s ease;
-    -ms-transition: -ms-perspective .4s ease;
-    -o-transition: -o-perspective .4s ease;
-    transition: perspective .4s ease;
-    -webkit-perspective: 600px;
-    -moz-perspective: 600px;
-    -ms-perspective: 600px;
-    perspective: 600px;
-    -webkit-perspective-origin: 0px -100px;
-    -moz-perspective-origin: 0px -100px;
-    -ms-perspective-origin: 0px -100px;
-    perspective-origin: 0px -100px;
-  }
-
-  /* line 46, reveal/_slides.scss */
-  .reveal .slides > section,
-  .reveal .slides > section > section {
-    display: none;
-    position: absolute;
-    width: 100%;
-    padding: 0 0;
-    z-index: 10;
-    line-height: 1.2em;
-    font-weight: normal;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -webkit-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-    -moz-transition: -moz-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -moz-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-    -ms-transition: -ms-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -ms-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-    -o-transition: -o-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -o-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-    transition: transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-  }
-
-  /* line 83, reveal/_slides.scss */
-  .reveal .slides > section {
-    left: -50%;
-    top: -50%;
-  }
-
-  /* line 89, reveal/_slides.scss */
-  .reveal .slides > section.present,
-  .reveal .slides > section > section.present {
-    display: block;
-    z-index: 11;
-    opacity: 1;
-  }
-
-  /* line 96, reveal/_slides.scss */
-  .reveal.center,
-  .reveal.center .slides {
-    min-height: auto;
-  }
-
-  /*********************************************
-   * GRID 
-   *********************************************/
-  /* line 6, reveal/_grid.scss */
-  .row {
-    width: 100%;
-    max-width: 719px;
-    min-width: 480px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-
-  /* line 14, reveal/_grid.scss */
-  .col {
-    float: left;
-    min-height: 1px;
-    width: 50%;
-  }
-
-  /* line 19, reveal/_grid.scss */
-  .col:not(img) {
-    height: 160px;
-  }
-
-  /* line 22, reveal/_grid.scss */
-  img.col {
-    height: auto;
-  }
-
-  /* line 25, reveal/_grid.scss */
-  li {
-    float: left;
-    min-height: 1px;
-    width: 50%;
-  }
-
-  /* line 31, reveal/_grid.scss */
-  .reveal li {
-    float: left;
-    min-height: 1px;
-    width: 50%;
-    max-width: 719px;
-    padding: 0 0 35px 0;
-    overflow: hidden;
-    font-size: 2em;
-    line-height: 1em;
-    min-height: 15px;
-    background-image: url("../lib/img/nav.png");
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-position-x: 30px;
-    padding-top: 20px;
-  }
-  /* line 49, reveal/_grid.scss */
-  .reveal li a {
-    display: block;
-    padding: 0 30px 0 30px;
-  }
-
-  /* line 55, reveal/_grid.scss */
-  ul.subnav {
-    width: 100%;
-    height: 160px;
-    padding: 0;
-  }
-
-  /* line 60, reveal/_grid.scss */
-  .subnav li {
-    width: 50%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  /* line 66, reveal/_grid.scss */
-  .subnav li > a, .subnav li > a:link, .subnav li > a:active, .subnav li > a:hover, .subnav li > a:visited {
-    display: block;
-    padding: 40px 30px 0 30px;
-    color: white;
-  }
-
-  /* line 73, reveal/_grid.scss */
-  .subnav li:first-child {
-    background-color: #b432a6;
-    background-image: none;
-  }
-
-  /* line 78, reveal/_grid.scss */
-  .subnav li:last-child {
-    background-color: #432752;
-    background-image: none;
-  }
-
-  /* line 91, reveal/reveal.scss */
-  .reveal li {
-    height: 110px;
-    word-wrap: break-word;
-  }
-  /* line 94, reveal/reveal.scss */
-  .reveal li:nth-child(9n) {
-    height: 110px;
-    width: 100%;
-  }
-}
 @media only screen and (min-width: 720px) {
-  /* line 103, reveal/reveal.scss */
+  /* line 115, reveal/reveal.scss */
   body {
     min-width: 720px;
     max-width: 1023px;
     width: 100%;
   }
 
-  /* line 108, reveal/reveal.scss */
+  /* line 120, reveal/reveal.scss */
   .reveal .slides {
     font-size: 0.62em;
   }
@@ -2036,12 +2108,22 @@ ul.subnav {
   }
 
   /* line 83, reveal/_slides.scss */
+  .reveal .slides > section.overlay,
+  .reveal .slides > section > section.overlay {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+
+  /* line 94, reveal/_slides.scss */
   .reveal .slides > section {
     left: -50%;
     top: -50%;
   }
 
-  /* line 89, reveal/_slides.scss */
+  /* line 100, reveal/_slides.scss */
   .reveal .slides > section.present,
   .reveal .slides > section > section.present {
     display: block;
@@ -2049,132 +2131,172 @@ ul.subnav {
     opacity: 1;
   }
 
-  /* line 96, reveal/_slides.scss */
+  /* line 106, reveal/_slides.scss */
+  .reveal .slides > section.overlay,
+  .reveal .slides > section > section.overlay {
+    display: block;
+    z-index: 12;
+    opacity: 1;
+    top: 0px;
+  }
+  /* line 113, reveal/_slides.scss */
+  .reveal .slides > section.overlay > section,
+  .reveal .slides > section > section.overlay > section {
+    display: block !important;
+  }
+
+  /* line 118, reveal/_slides.scss */
   .reveal.center,
   .reveal.center .slides {
     min-height: auto;
   }
 
-  /*********************************************
-   * GRID 
-   *********************************************/
-  /* line 6, reveal/_grid.scss */
-  .row {
-    width: 100%;
-    max-width: 1023px;
-    min-width: 720px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-
-  /* line 14, reveal/_grid.scss */
-  .col {
-    float: left;
-    min-height: 1px;
-    width: 50%;
-  }
-
-  /* line 19, reveal/_grid.scss */
-  .col:not(img) {
-    height: 160px;
-  }
-
-  /* line 22, reveal/_grid.scss */
-  img.col {
-    height: auto;
-  }
-
-  /* line 25, reveal/_grid.scss */
-  li {
-    float: left;
-    min-height: 1px;
-    width: 25%;
-  }
-
-  /* line 31, reveal/_grid.scss */
-  .reveal li {
-    float: left;
-    min-height: 1px;
-    width: 25%;
-    max-width: 1023px;
-    padding: 0 0 35px 0;
-    overflow: hidden;
-    font-size: 2em;
-    line-height: 1em;
-    min-height: 15px;
-    background-image: url("../lib/img/nav.png");
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-position-x: 30px;
-    padding-top: 20px;
-  }
-  /* line 49, reveal/_grid.scss */
-  .reveal li a {
-    display: block;
-    padding: 0 30px 0 30px;
-  }
-
-  /* line 55, reveal/_grid.scss */
-  ul.subnav {
-    width: 100%;
-    height: 160px;
-    padding: 0;
-  }
-
-  /* line 60, reveal/_grid.scss */
-  .subnav li {
-    width: 50%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  /* line 66, reveal/_grid.scss */
-  .subnav li > a, .subnav li > a:link, .subnav li > a:active, .subnav li > a:hover, .subnav li > a:visited {
-    display: block;
-    padding: 40px 30px 0 30px;
-    color: white;
-  }
-
-  /* line 73, reveal/_grid.scss */
-  .subnav li:first-child {
-    background-color: #b432a6;
-    background-image: none;
-  }
-
-  /* line 78, reveal/_grid.scss */
-  .subnav li:last-child {
-    background-color: #432752;
-    background-image: none;
-  }
-
-  /* line 134, reveal/reveal.scss */
+  /* line 144, reveal/reveal.scss */
   .reveal li {
     height: 150px;
   }
-  /* line 136, reveal/reveal.scss */
+  /* line 146, reveal/reveal.scss */
   .reveal li:nth-child(5) {
     height: 110px;
     width: 100%;
   }
-  /* line 140, reveal/reveal.scss */
+  /* line 150, reveal/reveal.scss */
   .reveal li:nth-child(9n) {
     height: 150px;
     width: 25%;
   }
-  /* line 144, reveal/reveal.scss */
+  /* line 154, reveal/reveal.scss */
   .reveal li:nth-child(n+10) {
     height: 150px;
     width: 50%;
   }
+  /* line 158, reveal/reveal.scss */
+  .reveal li:nth-child(n+7) {
+    display: block;
+  }
+  /* line 161, reveal/reveal.scss */
+  .reveal li.more {
+    display: block;
+    width: 100%;
+    height: 50%;
+  }
+
+  /*********************************************
+   * GRID 
+   *********************************************/
+  /* line 6, reveal/_grid.scss */
+  .row {
+    width: 100%;
+    max-width: 1023px;
+    min-width: 720px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  /* line 14, reveal/_grid.scss */
+  .col {
+    float: left;
+    min-height: 1px;
+    width: 50%;
+  }
+
+  /* line 19, reveal/_grid.scss */
+  .col:not(img) {
+    height: 160px;
+  }
+
+  /* line 22, reveal/_grid.scss */
+  img.col {
+    height: auto;
+  }
+
+  /* line 25, reveal/_grid.scss */
+  li {
+    float: left;
+    min-height: 1px;
+    width: 25%;
+  }
+
+  /* line 31, reveal/_grid.scss */
+  .reveal li {
+    float: left;
+    min-height: 1px;
+    width: 25%;
+    max-width: 1023px;
+    padding: 0 0 35px 0;
+    overflow: hidden;
+    font-size: 2em;
+    min-height: 15px;
+    background-image: url("../lib/img/nav.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-position-x: 30px;
+    padding-top: 20px;
+  }
+  /* line 49, reveal/_grid.scss */
+  .reveal li a {
+    display: block;
+    padding: 0 30px 0 30px;
+    line-height: 1em;
+  }
+
+  /* line 56, reveal/_grid.scss */
+  ul.subnav {
+    width: 100%;
+    height: 160px;
+    padding: 0;
+  }
+
+  /* line 61, reveal/_grid.scss */
+  .subnav li {
+    width: 50%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  /* line 67, reveal/_grid.scss */
+  .subnav li > a, .subnav li > a:link, .subnav li > a:active, .subnav li > a:hover, .subnav li > a:visited {
+    display: block;
+    padding: 40px 30px 0 30px;
+    color: white;
+  }
+
+  /* line 74, reveal/_grid.scss */
+  .subnav li:first-child {
+    background-color: #b432a6;
+    background-image: none;
+  }
+
+  /* line 79, reveal/_grid.scss */
+  .subnav li:last-child {
+    background-color: #432752;
+    background-image: none;
+  }
+
+  /* line 84, reveal/_grid.scss */
+  #kontakt li {
+    padding: 0;
+    height: auto;
+    background-color: transparent;
+  }
+  /* line 88, reveal/_grid.scss */
+  #kontakt li img {
+    width: 100%;
+    height: auto;
+  }
+  /* line 92, reveal/_grid.scss */
+  #kontakt li a {
+    margin-top: 15px;
+  }
 }
 @media only screen and (min-width: 1024px) {
-  /* line 154, reveal/reveal.scss */
+  /* line 176, reveal/reveal.scss */
   body {
     min-width: 1024px;
     max-width: 1200px;
   }
 
-  /* line 159, reveal/reveal.scss */
+  /* line 181, reveal/reveal.scss */
   .reveal .slides {
     font-size: 0.62em;
   }
@@ -2424,12 +2546,22 @@ ul.subnav {
   }
 
   /* line 83, reveal/_slides.scss */
+  .reveal .slides > section.overlay,
+  .reveal .slides > section > section.overlay {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+
+  /* line 94, reveal/_slides.scss */
   .reveal .slides > section {
     left: -50%;
     top: -50%;
   }
 
-  /* line 89, reveal/_slides.scss */
+  /* line 100, reveal/_slides.scss */
   .reveal .slides > section.present,
   .reveal .slides > section > section.present {
     display: block;
@@ -2437,7 +2569,21 @@ ul.subnav {
     opacity: 1;
   }
 
-  /* line 96, reveal/_slides.scss */
+  /* line 106, reveal/_slides.scss */
+  .reveal .slides > section.overlay,
+  .reveal .slides > section > section.overlay {
+    display: block;
+    z-index: 12;
+    opacity: 1;
+    top: 0px;
+  }
+  /* line 113, reveal/_slides.scss */
+  .reveal .slides > section.overlay > section,
+  .reveal .slides > section > section.overlay > section {
+    display: block !important;
+  }
+
+  /* line 118, reveal/_slides.scss */
   .reveal.center,
   .reveal.center .slides {
     min-height: auto;
@@ -2488,7 +2634,6 @@ ul.subnav {
     padding: 0 0 35px 0;
     overflow: hidden;
     font-size: 2em;
-    line-height: 1em;
     min-height: 15px;
     background-image: url("../lib/img/nav.png");
     background-repeat: no-repeat;
@@ -2500,56 +2645,73 @@ ul.subnav {
   .reveal li a {
     display: block;
     padding: 0 30px 0 30px;
+    line-height: 1em;
   }
 
-  /* line 55, reveal/_grid.scss */
+  /* line 56, reveal/_grid.scss */
   ul.subnav {
     width: 100%;
     height: 160px;
     padding: 0;
   }
 
-  /* line 60, reveal/_grid.scss */
+  /* line 61, reveal/_grid.scss */
   .subnav li {
     width: 50%;
     height: 100%;
     padding: 0;
     margin: 0;
   }
-  /* line 66, reveal/_grid.scss */
+  /* line 67, reveal/_grid.scss */
   .subnav li > a, .subnav li > a:link, .subnav li > a:active, .subnav li > a:hover, .subnav li > a:visited {
     display: block;
     padding: 40px 30px 0 30px;
     color: white;
   }
 
-  /* line 73, reveal/_grid.scss */
+  /* line 74, reveal/_grid.scss */
   .subnav li:first-child {
     background-color: #b432a6;
     background-image: none;
   }
 
-  /* line 78, reveal/_grid.scss */
+  /* line 79, reveal/_grid.scss */
   .subnav li:last-child {
     background-color: #432752;
     background-image: none;
   }
 
-  /* line 185, reveal/reveal.scss */
+  /* line 84, reveal/_grid.scss */
+  #kontakt li {
+    padding: 0;
+    height: auto;
+    background-color: transparent;
+  }
+  /* line 88, reveal/_grid.scss */
+  #kontakt li img {
+    width: 100%;
+    height: auto;
+  }
+  /* line 92, reveal/_grid.scss */
+  #kontakt li a {
+    margin-top: 15px;
+  }
+
+  /* line 207, reveal/reveal.scss */
   .reveal li {
     height: 150px;
   }
-  /* line 188, reveal/reveal.scss */
+  /* line 210, reveal/reveal.scss */
   .reveal li:nth-child(6) {
     height: 150px;
     width: 100%;
   }
-  /* line 192, reveal/reveal.scss */
+  /* line 214, reveal/reveal.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5), .reveal li:nth-child(n+10) {
     height: 150px;
     width: 20%;
   }
-  /* line 196, reveal/reveal.scss */
+  /* line 218, reveal/reveal.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5) {
     height: 150px;
     width: 20%;

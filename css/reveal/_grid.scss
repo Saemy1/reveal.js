@@ -37,7 +37,7 @@ li {
   padding: 0 0 35px 0 ;
   overflow: hidden;
   font-size: 2em;
-  line-height: 1em;
+ 
   min-height: 15px;
   
   background-image: url('../lib/img/nav.png');
@@ -49,6 +49,7 @@ li {
   a {
     display:block;
     padding: 0 $padding-left 0 $padding-left ;
+     line-height: 1em;
   }
 }
 
@@ -80,5 +81,15 @@ ul.subnav  {
   background-image: none;
 }
 
-
-
+#kontakt li {
+  padding: 0;
+  height: auto;
+  background-color: transparent;
+  img {
+    width:100%;
+    height: auto;
+  }
+  a {
+    margin-top: 15px;
+  }
+}

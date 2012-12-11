@@ -44,60 +44,72 @@ $slide-section-padding-top: 0;
 @import "speakersnote";
 @import "zoom";
 
-$grid-max-width: 280px;
-$grid-min-width: 100%;
-$grid-col-size: 280px;
-@import "grid";
+
 @import "custom"; 
+
+.reveal .slides>section.overlay {
+
+}
+.reveal .slides>section.overlay >section{
+ background-color: gray !important;
+   padding: 5% 5%;
+ width: 90%;
+}
+
+body {
+  min-width: 480px;
+  max-width:719px;
+  width: 100%;
+}
+.reveal .slides {
+  font-size: 0.52em;
+  
+}
+
+$default-margin-left: 40px;
+$default-margin-bottom: 10px;
+$default-small-margin: 5px; 
+$default-small-padding: 5px;
+$max-code-height: 400px;
+@import "defaults";
+
+$slide-max-width: 719px;
+$slide-min-height: 320px;
+$slide-width: 100%;
+$slide-left: 50%;
+$slide-top: 50%;
+$slide-section-padding: 30px;
+@import "slides";
+
+//$padding-left:10px;
+$grid-max-width: 719px;
+$grid-min-width: 480px;
+$grid-col-size: 50%;
+
+.reveal li {
+  height: 110px;
+  word-wrap: break-word;
+  &:nth-child(9n) {
+    height: 110px;
+    width:100%;
+  }
+   &:nth-child(n+7) {
+    display:none;
+  }
+  &.more {
+    display:block;
+    width: 100%;
+    height: 50%;
+  }
+}
+
+@import "grid";
+
 
 
 /*********************************************
  * MEDIA Queryies
  *********************************************/
-@media only screen and (min-width: 480px) {
-  body {
-    min-width: 480px;
-    max-width:719px;
-    width: 100%;
-  }
-  .reveal .slides {
-    font-size: 0.52em;
-    
-  }
-  
-  $default-margin-left: 40px;
-  $default-margin-bottom: 10px;
-  $default-small-margin: 5px; 
-  $default-small-padding: 5px;
-  $max-code-height: 400px;
-  @import "defaults";
-
-  $slide-max-width: 719px;
-  $slide-min-height: 420px;
-  $slide-width: 100%;
-  $slide-left: 50%;
-  $slide-top: 50%;
-  $slide-section-padding: 30px;
-  @import "slides";
-  
-  //$padding-left:10px;
-  $grid-max-width: 719px;
-  $grid-min-width: 480px;
-  $grid-col-size: 50%;
-  
-  
-  @import "grid";
-  
-   .reveal li {
-    height: 110px;
-    word-wrap: break-word;
-    &:nth-child(9n) {
-      height: 110px;
-      width:100%;
-    }
-  }
-   
-}
 
 @media only screen and (min-width: 720px) {
   body {
@@ -129,8 +141,6 @@ $grid-col-size: 280px;
   $grid-max-width: 1023px;
   $grid-min-width: 720px;
   $grid-col-size: 25%;
-  @import "grid";
-  
   .reveal li {
     height: 150px;
      &:nth-child(5) {
@@ -145,7 +155,19 @@ $grid-col-size: 280px;
       height: 150px;
       width:50%;
     }
+      &:nth-child(n+7) {
+    display:block;
+    }
+     &.more {
+    display:block;
+    width: 100%;
+    height: 50%;
   }
+  }
+  @import "grid";
+  
+  
+
   
 }
 

@@ -13,8 +13,9 @@
         <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale = 1.0,maximum-scale = 1.0" />
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/shaders.css">
-		<link rel="stylesheet" href="css/theme/namics2.css" id="theme">
-<script src="plugin/responsiveimgs/responsiveimgs.js"></script>
+		<link rel="stylesheet" href="css/theme/namics.css" id="theme">
+		<!-- plugin für Responsive images, muss vor Content eingebunden sein -->
+        <script src="plugin/responsiveimgs/responsiveimgs.js"></script>
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -43,26 +44,43 @@
                                 
                             </hgroup>
                         
+                            <!-- Alle links werden per Ajax in die unteren Sections #1 - #11 geladen 
+                                 Wenn weitere Seiten eingefügt werden sollen, dann muss einefach ein 
+                                 neuer Link eingefügt werden
+                                 <li ><a href="#/NeueSeite">Neue Seite</a></li>
+                             -->
                             <ul id="nav">
-                                <li><a href="#/0/1">App-Wildwuchs</a></li>
-                                <li><a href="#/1">Potential fürs Unternehmen?</a></li>
-                                <li><a href="#/2">Mobile nur hohe kosten!</a></li>
-                                <li><a href="#/3">Brauchen wir das überhaupt?</a></li>
-                                <li><a href="#/4">Was will der Kunde?</a></li>
-                                <li><a href="#/5">Wer verantwortet das?</a></li>
-                                <li><a href="#/6">Welche Plattform nutzen?</a></li>
-                                <li><a href="#/7">Ist das denn sicher?</a></li>
-                                <li class="fill"><a href="#/8">Wir sind Responsive.</a></li>
-                                <li><a href="#/9">Wir sind Mobile.</a></li>
-                                <li><a href="#/9">@</a></li>
-                              
+                                <li><a href="#/1">App-Wildwuchs</a></li>
+                                <li><a href="#/2">Potential fürs Unternehmen?</a></li>
+                                <li><a href="#/3">Mobile nur hohe kosten!</a></li>
+                                <li><a href="#/4">Brauchen wir das überhaupt?</a></li>
+                                <li><a href="#/5">Was will der Kunde?</a></li>
+                                <li><a href="#/6">Wer verantwortet das?</a></li>
+                                <li><a href="#/7">Welche Plattform nutzen?</a></li>
+                                <li><a href="#/8">Ist das denn sicher?</a></li>
+                                <li class="fill"><a href="#/9">Wir sind Responsive.</a></li>
+                                <li><a href="#/10">Wir sind Mobile.</a></li>
+                                <li><a href="#/10">@</a></li>
+                                <li class="more"><a href="#/10">more</a></li>
                             </ul>
-                          
+                            <ul id="referenzen">
+                                <li><a href="#/0/1">REFERENZ A</a></li>
+                                <li><a href="#/1">REF B</a></li>
+                            </ul>
+                            <ul id="kontakt">
+                                <li><a href="#/9">Wir sind Mobile.</a></li>
+                                <li><img src="lib/img/michael.png?full=lib/img/michaelLarge.png"/></li>
+                            </ul>
     				    </section>
-                        <section data-state="isolate">
-                        </section>
+                        
                      </section>
     				
+                     <!-- Alle links aus #nav werden in Sections #1 - #11 geladen 
+                         Wenn weitere Seiten eingefügt werden sollen, dann muss einefach ein 
+                         neue Section eingefügt werden
+                         <section id="12">
+                         </section>
+                     -->
     				<section id="1">
     				</section>
     				<section id="2">
@@ -81,6 +99,10 @@
     				</section>
     				<section id="9">
     				</section>
+    				<section id="10">
+    				</section>
+    				<section id="11">
+    				</section>
 			</div>
 
 		</div>
@@ -97,7 +119,7 @@
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
-				progress: false,
+				progress: true,
 				history: true,
 				center: true,
                 overview: false,
@@ -106,6 +128,7 @@
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } }
+					//Alle nicht verwendeten plugins von reaveal.js wurden auskommentiert.
 					//{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
 					//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					//{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
