@@ -258,12 +258,12 @@ body {
 .reveal ol ol,
 .reveal ol ul {
   display: block;
-  margin-left: 10px;
+  margin-left: 40px;
 }
 
 /* line 61, reveal/_defaults.scss */
 .reveal p {
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   line-height: 1.2em;
 }
 
@@ -278,8 +278,8 @@ body {
   display: block;
   position: relative;
   width: 70%;
-  margin: 2px auto;
-  padding: 2px;
+  margin: 5px auto;
+  padding: 5px;
   font-style: italic;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
@@ -321,7 +321,7 @@ body {
   display: block;
   position: relative;
   width: 90%;
-  margin: 6px auto;
+  margin: 15px auto;
   text-align: left;
   font-size: 0.55em;
   font-family: monospace;
@@ -332,14 +332,14 @@ body {
 
 /* line 118, reveal/_defaults.scss */
 .reveal pre code {
-  padding: 2px;
+  padding: 5px;
 }
 
 /* line 122, reveal/_defaults.scss */
 .reveal code {
   font-family: monospace;
   overflow: auto;
-  max-height: 150px;
+  max-height: 400px;
 }
 
 /* line 129, reveal/_defaults.scss */
@@ -592,8 +592,8 @@ body {
 /* line 15, reveal/_slides.scss */
 .reveal .slides {
   position: absolute;
-  max-width: 320px;
-  min-height: 150px;
+  max-width: 719px;
+  min-height: 320px;
   width: 100%;
   left: 50%;
   top: 50%;
@@ -621,7 +621,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  padding: 0 0;
+  padding: 5px 0;
   z-index: 10;
   line-height: 1.2em;
   font-weight: normal;
@@ -1411,328 +1411,35 @@ body {
   max-height: 400px;
 }
 
-/* line 53, reveal/reveal.scss */
+/* line 51, reveal/reveal.scss */
 .reveal .slides > section.overlay > section {
   background-color: gray !important;
   padding: 5% 5%;
   width: 90%;
 }
 
-/* line 59, reveal/reveal.scss */
+/* line 57, reveal/reveal.scss */
 body {
-  min-width: 480px;
+  min-width: 120px;
   max-width: 719px;
   width: 100%;
 }
 
-/* line 64, reveal/reveal.scss */
-.reveal .slides {
-  font-size: 0.52em;
-}
-
-/*********************************************
- * DEFAULT ELEMENT STYLES
- *********************************************/
-/* Fixes issue in Chrome where italic fonts did not appear when printing to PDF */
-/* line 7, reveal/_defaults.scss */
-.reveal:after {
-  content: '';
-  font-style: italic;
-}
-
-/* Preserve aspect ratio and scale image so it's bound within the section */
-/* line 14, reveal/_defaults.scss */
-.reveal img,
-.reveal iframe {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* line 20, reveal/_defaults.scss */
-.reveal strong,
-.reveal b {
-  font-weight: bold;
-}
-
-/* line 25, reveal/_defaults.scss */
-.reveal em,
-.reveal i {
-  font-style: italic;
-}
-
-/* line 30, reveal/_defaults.scss */
-.reveal ol,
-.reveal ul {
-  display: inline-block;
-  text-align: left;
-  margin: 0 0 0 0;
-}
-
-/* line 37, reveal/_defaults.scss */
-.reveal ol {
-  list-style-type: decimal;
-}
-
-/* line 41, reveal/_defaults.scss */
-.reveal ul {
-  list-style-type: disc;
-}
-
-/* line 45, reveal/_defaults.scss */
-.reveal ul ul {
-  list-style-type: square;
-}
-
-/* line 49, reveal/_defaults.scss */
-.reveal ul ul ul {
-  list-style-type: circle;
-}
-
-/* line 56, reveal/_defaults.scss */
-.reveal ul ul,
-.reveal ul ol,
-.reveal ol ol,
-.reveal ol ul {
-  display: block;
-  margin-left: 40px;
-}
-
-/* line 61, reveal/_defaults.scss */
-.reveal p {
-  margin-bottom: 10px;
-  line-height: 1.2em;
-}
-
-/* line 67, reveal/_defaults.scss */
-.reveal q,
-.reveal blockquote {
-  quotes: none;
-}
-
-/* line 71, reveal/_defaults.scss */
-.reveal blockquote {
-  display: block;
-  position: relative;
-  width: 70%;
-  margin: 5px auto;
-  padding: 5px;
-  font-style: italic;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* line 83, reveal/_defaults.scss */
-.reveal blockquote p:first-child,
-.reveal blockquote p:last-child {
-  display: inline-block;
-}
-
-/* line 86, reveal/_defaults.scss */
-.reveal blockquote:before {
-  content: '\201C';
-}
-
-/* line 89, reveal/_defaults.scss */
-.reveal blockquote:after {
-  content: '\201D';
-}
-
-/* line 93, reveal/_defaults.scss */
-.reveal q {
-  font-style: italic;
-}
-
-/* line 96, reveal/_defaults.scss */
-.reveal q:before {
-  content: '\201C';
-}
-
-/* line 99, reveal/_defaults.scss */
-.reveal q:after {
-  content: '\201D';
-}
-
-/* line 103, reveal/_defaults.scss */
-.reveal pre {
-  display: block;
-  position: relative;
-  width: 90%;
-  margin: 15px auto;
-  text-align: left;
-  font-size: 0.55em;
-  font-family: monospace;
-  line-height: 1.2em;
-  word-wrap: break-word;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-}
-
-/* line 118, reveal/_defaults.scss */
-.reveal pre code {
-  padding: 5px;
-}
-
-/* line 122, reveal/_defaults.scss */
-.reveal code {
-  font-family: monospace;
-  overflow: auto;
-  max-height: 400px;
-}
-
-/* line 129, reveal/_defaults.scss */
-.reveal table th,
-.reveal table td {
-  text-align: left;
-  padding-right: .3em;
-}
-
-/* line 134, reveal/_defaults.scss */
-.reveal table th {
-  text-shadow: white 1px 1px 2px;
-}
-
-/* line 138, reveal/_defaults.scss */
-.reveal sup {
-  vertical-align: super;
-}
-
-/* line 141, reveal/_defaults.scss */
-.reveal sub {
-  vertical-align: sub;
-}
-
-/* line 145, reveal/_defaults.scss */
-.reveal small {
-  display: inline-block;
-  font-size: 0.6em;
-  line-height: 1.2em;
-  vertical-align: top;
-}
-
-/* line 152, reveal/_defaults.scss */
-.reveal small * {
-  vertical-align: top;
-}
-
-/*********************************************
- * SLIDES
- *********************************************/
-/* line 6, reveal/_slides.scss */
-.reveal {
-  overflow-y: scroll !important;
-  overflow-x: hidden !important;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 640px;
-  /* min height + 40 to account for padding */
-}
-
-/* line 15, reveal/_slides.scss */
-.reveal .slides {
-  position: absolute;
-  max-width: 719px;
-  min-height: 320px;
-  width: 100%;
-  left: 50%;
-  top: 50%;
-  overflow: visible;
-  z-index: 1;
-  text-align: left;
-  -webkit-transition: -webkit-perspective .4s ease;
-  -moz-transition: -moz-perspective .4s ease;
-  -ms-transition: -ms-perspective .4s ease;
-  -o-transition: -o-perspective .4s ease;
-  transition: perspective .4s ease;
-  -webkit-perspective: 600px;
-  -moz-perspective: 600px;
-  -ms-perspective: 600px;
-  perspective: 600px;
-  -webkit-perspective-origin: 0px -100px;
-  -moz-perspective-origin: 0px -100px;
-  -ms-perspective-origin: 0px -100px;
-  perspective-origin: 0px -100px;
-}
-
-/* line 46, reveal/_slides.scss */
-.reveal .slides > section,
-.reveal .slides > section > section {
-  display: none;
-  position: absolute;
-  width: 100%;
-  padding: 0 0;
-  z-index: 10;
-  line-height: 1.2em;
-  font-weight: normal;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -webkit-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-  -moz-transition: -moz-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -moz-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-  -ms-transition: -ms-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -ms-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-  -o-transition: -o-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), -o-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-  transition: transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-}
-
-/* line 83, reveal/_slides.scss */
-.reveal .slides > section.overlay,
-.reveal .slides > section > section.overlay {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-
-/* line 94, reveal/_slides.scss */
-.reveal .slides > section {
-  left: -50%;
-  top: -50%;
-}
-
-/* line 100, reveal/_slides.scss */
-.reveal .slides > section.present,
-.reveal .slides > section > section.present {
-  display: block;
-  z-index: 11;
-  opacity: 1;
-}
-
-/* line 106, reveal/_slides.scss */
-.reveal .slides > section.overlay,
-.reveal .slides > section > section.overlay {
-  display: block;
-  z-index: 12;
-  opacity: 1;
-  top: 0px;
-}
-/* line 113, reveal/_slides.scss */
-.reveal .slides > section.overlay > section,
-.reveal .slides > section > section.overlay > section {
-  display: block !important;
-}
-
-/* line 118, reveal/_slides.scss */
-.reveal.center,
-.reveal.center .slides {
-  min-height: auto;
-}
-
-/* line 89, reveal/reveal.scss */
+/* line 68, reveal/reveal.scss */
 .reveal li {
   height: 110px;
   word-wrap: break-word;
 }
-/* line 92, reveal/reveal.scss */
+/* line 71, reveal/reveal.scss */
 .reveal li:nth-child(9n) {
   height: 110px;
   width: 100%;
 }
-/* line 96, reveal/reveal.scss */
+/* line 75, reveal/reveal.scss */
 .reveal li:nth-child(n+7) {
   display: none;
 }
-/* line 99, reveal/reveal.scss */
+/* line 78, reveal/reveal.scss */
 .reveal li.more {
   display: block;
   width: 100%;
@@ -1746,7 +1453,7 @@ body {
 .row {
   width: 100%;
   max-width: 719px;
-  min-width: 480px;
+  min-width: 100px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -1851,14 +1558,14 @@ ul.subnav {
  * MEDIA Queryies
  *********************************************/
 @media only screen and (min-width: 720px) {
-  /* line 115, reveal/reveal.scss */
+  /* line 94, reveal/reveal.scss */
   body {
     min-width: 720px;
     max-width: 1023px;
     width: 100%;
   }
 
-  /* line 120, reveal/reveal.scss */
+  /* line 99, reveal/reveal.scss */
   .reveal .slides {
     font-size: 0.62em;
   }
@@ -2092,7 +1799,7 @@ ul.subnav {
     display: none;
     position: absolute;
     width: 100%;
-    padding: 0 0;
+    padding: 5px 0;
     z-index: 10;
     line-height: 1.2em;
     font-weight: normal;
@@ -2151,30 +1858,30 @@ ul.subnav {
     min-height: auto;
   }
 
-  /* line 144, reveal/reveal.scss */
+  /* line 123, reveal/reveal.scss */
   .reveal li {
     height: 150px;
   }
-  /* line 146, reveal/reveal.scss */
+  /* line 125, reveal/reveal.scss */
   .reveal li:nth-child(5) {
     height: 110px;
     width: 100%;
   }
-  /* line 150, reveal/reveal.scss */
+  /* line 129, reveal/reveal.scss */
   .reveal li:nth-child(9n) {
     height: 150px;
     width: 25%;
   }
-  /* line 154, reveal/reveal.scss */
+  /* line 133, reveal/reveal.scss */
   .reveal li:nth-child(n+10) {
     height: 150px;
     width: 50%;
   }
-  /* line 158, reveal/reveal.scss */
+  /* line 137, reveal/reveal.scss */
   .reveal li:nth-child(n+7) {
     display: block;
   }
-  /* line 161, reveal/reveal.scss */
+  /* line 140, reveal/reveal.scss */
   .reveal li.more {
     display: block;
     width: 100%;
@@ -2290,13 +1997,13 @@ ul.subnav {
   }
 }
 @media only screen and (min-width: 1024px) {
-  /* line 176, reveal/reveal.scss */
+  /* line 155, reveal/reveal.scss */
   body {
     min-width: 1024px;
     max-width: 1200px;
   }
 
-  /* line 181, reveal/reveal.scss */
+  /* line 160, reveal/reveal.scss */
   .reveal .slides {
     font-size: 0.62em;
   }
@@ -2530,7 +2237,7 @@ ul.subnav {
     display: none;
     position: absolute;
     width: 100%;
-    padding: 0 0;
+    padding: 5px 0;
     z-index: 10;
     line-height: 1.2em;
     font-weight: normal;
@@ -2697,21 +2404,21 @@ ul.subnav {
     margin-top: 15px;
   }
 
-  /* line 207, reveal/reveal.scss */
+  /* line 186, reveal/reveal.scss */
   .reveal li {
     height: 150px;
   }
-  /* line 210, reveal/reveal.scss */
+  /* line 189, reveal/reveal.scss */
   .reveal li:nth-child(6) {
     height: 150px;
     width: 100%;
   }
-  /* line 214, reveal/reveal.scss */
+  /* line 193, reveal/reveal.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5), .reveal li:nth-child(n+10) {
     height: 150px;
     width: 20%;
   }
-  /* line 218, reveal/reveal.scss */
+  /* line 197, reveal/reveal.scss */
   .reveal li:nth-child(9n), .reveal li:nth-child(5) {
     height: 150px;
     width: 20%;

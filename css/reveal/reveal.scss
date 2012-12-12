@@ -16,24 +16,22 @@ $color2: #432752;
 @import "headers";
 @import "fragments"; 
 
-$default-margin-left: 10px;
-$default-margin-bottom: 2px;
-$default-small-margin: 2px;
-$default-small-padding: 2px;
-$max-code-height: 150px;
+$default-margin-left: 40px;
+$default-margin-bottom: 10px;
+$default-small-margin: 5px; 
+$default-small-padding: 5px;
+$max-code-height: 400px;
 
 @import "defaults";
-
-
 @import "controls";
 @import "progressbar";
 @import "rollinglinks";
-$slide-max-width: 320px;
-$slide-min-height: 150px;
+$slide-max-width: 719px;
+$slide-min-height: 320px;
 $slide-width: 100%;
 $slide-left: 50%;
 $slide-top: 50%;
-$slide-section-padding-top: 0;
+$slide-section-padding-top: 5px;
 @import "slides";
 @import "transitions";
 @import "overview";
@@ -57,33 +55,14 @@ $slide-section-padding-top: 0;
 }
 
 body {
-  min-width: 480px;
+  min-width: 120px;
   max-width:719px;
   width: 100%;
 }
-.reveal .slides {
-  font-size: 0.52em;
-  
-}
-
-$default-margin-left: 40px;
-$default-margin-bottom: 10px;
-$default-small-margin: 5px; 
-$default-small-padding: 5px;
-$max-code-height: 400px;
-@import "defaults";
-
-$slide-max-width: 719px;
-$slide-min-height: 320px;
-$slide-width: 100%;
-$slide-left: 50%;
-$slide-top: 50%;
-$slide-section-padding: 30px;
-@import "slides";
 
 //$padding-left:10px;
 $grid-max-width: 719px;
-$grid-min-width: 480px;
+$grid-min-width: 100px;
 $grid-col-size: 50%;
 
 .reveal li {

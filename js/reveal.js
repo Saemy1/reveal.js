@@ -13,6 +13,7 @@ var Reveal = (function(){
 		HORIZONTAL_SLIDES_SELECTOR = '.reveal .slides>section',
 		VERTICAL_SLIDES_SELECTOR = '.reveal .slides>section.present>section',
 
+		//Flag um anzuzeigen, dass die URL von reveal JS angepasst wurde.
 		urlrewrite = false,
 		
 		// Configurations defaults, can be overridden at initialization time
@@ -144,7 +145,7 @@ var Reveal = (function(){
 		//Load Navi
 	 	$('#nav a').each(function() {
 		 	var hash  = this.href.split("#")[1];
-		 	hash = hash.replace('overflow/','');
+		 	hash = hash.replace('overlay/','');
 		
 		 	hash = hash.split('/')[1];	
 		 	//console.log(hash);
@@ -172,6 +173,7 @@ var Reveal = (function(){
 		if( !dom.wrapper.querySelector( '.progress' ) && config.progress ) {
 			var progressElement = document.createElement( 'div' );
 			progressElement.classList.add( 'progress' );
+			
 			
 			var spans = '';
 			var before = '<span id="indexPrevious"><</span>';
@@ -929,7 +931,7 @@ var Reveal = (function(){
 	 * 
 	 * Schiebe die Slide von unten nach oben über die aktuelle view
 	 * der Link muss wie folgt gesetzt sein:
-	 * #/overflow/LINK
+	 * #/overlay/LINK
 	 */
 	function overlay( h, v ) {
 		
@@ -1228,9 +1230,9 @@ var Reveal = (function(){
 			return;
 		}
 		var overflow = false;
-		if(hash.indexOf("overflow")!==-1) {
+		if(hash.indexOf("overlay")!==-1) {
 			overflow = true;
-			hash=hash.replace('overflow/','');
+			hash=hash.replace('overlay/','');
 
 		} 
 		// Attempt to parse the hash as either an index or name
